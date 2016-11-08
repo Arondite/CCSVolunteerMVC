@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "UserLogIn";
+}
+
+<!--Navigation Start-->
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			@*<a class="navbar-brand" href="http://icarus.cs.weber.edu/~rl11386/CCS/index.html">*@
+				<img src="~/images/CCSLogo.png" width="150" height="36" alt="Catholic Community Services">
+			@*</a>*@
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<!--***********************************************************************************************************************-->
+		<div class="navbar-collapse collapse" id="defaultNavbar1" aria-expanded="false" style="height: 1px;">
+			<ul class="nav navbar-nav">
+				<li>@*<a href="http://icarus.cs.weber.edu/~rl11386/CCS/user/userLogIn.php">User Log In</a>*@</li>
+				<!--<li><a href="../volunteer/volLogIn.php">Volunteer Log In</a></li>-->
+			</ul>
+		</div>
+		<!--***********************************************************************************************************************-->
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid -->
+</nav>
+<!--Navigation End-->
+<!--PHP Start-->
+<!--PHP End-->
+<!--Content Start-->
+<div class="container-fluid">
+	<div class="container">
+		<h1>User Log In</h1>
+		<br><br>
+		<!--Previous action sent to action="http://icarus.cs.weber.edu/~rl11386/CCS/user/userLogIn.php"-->
+		<form action="" method="post" class="form-horizontal" id="login">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Username:</label>
+				<div class="col-sm-5">
+					<input name="username" type="text" required="required" id="username" maxlength="50" class="form-control">
+				</div>
+				<br><br>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Password:</label>
+				<div class="col-sm-5">
+					<input name="password" type="password" required="required" class="form-control" id="password" maxlength="30">
+				</div>
+				<br><br>
+			</div>
+			<div class="col-sm-offset-2 col-sm-5">
+				<input class="btn btn-primary" name="submit" type="submit" id="submit" formmethod="POST" title="Submit" value="Submit">
+				&nbsp;&nbsp;&nbsp;
+				<input class="btn btn-danger" name="reset" type="reset" id="reset" title="Reset" value="Reset">
+			</div>
+		</form>
+	</div>
+</div>
+<!--Content End-->
+<br><br>
+
+<!--Footer / Scripts Start-->
+<!--Footer Start-->
+@*<footer class="footer">
+	<div class="container">
+		<ul class="footer-text">
+			<li>Catholic Community Services © 2016</li>
+			<li>Version 1.0</li>
+			<li>Developed by Weber State University students</li>
+		</ul>
+	</div>
+</footer>*@
+<!--Footer End-->
+
+
+<!--jQuery API-->
+@*<script src="./CCS - Administrator Log In_files/jquery.min.js.download"></script>*@
+<!--jquery from the MVC pattern-->
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="js/jquery-1.11.3.min.js"></script>-->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- <script src="../js/bootstrap.js"></script> -->
+@*<script src="./CCS - Administrator Log In_files/bootstrap-3.3.6.js.download"></script>*@
+<!--Library from MVC pattern-->
+@*<script src="~/Scripts/bootstrap.min.js"></script>*@
+
+
+<!-- Main jQuery File -->
+@*<script src="./CCS - Administrator Log In_files/main.js.download"></script>*@
+<!--Copied file from original project and placed into project-->
+<script src="~/Scripts/main.js"></script>
+
+
+<!--Date Validation File-->
+<!--<script src="./CCS - Administrator Log In_files/dateValidation.js.download"></script> Footer / Scripts End-->
+<!--Copied file from original project and placed into project-->
+<script src="~/Scripts/dateValidation.js"></script>

@@ -1,0 +1,50 @@
+﻿@model CCSVolunteerMVC.Models.GroupContact
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GroupContact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.grpContName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grpContName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contactTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contactTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteerGroupID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteerGroupID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grpContInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grpContInfo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.groupContactID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

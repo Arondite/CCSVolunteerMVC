@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.Contact>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.contactTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contactInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contCanContact)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.contactTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volunteerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contactInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contCanContact)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.contactID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.contactID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.contactID })
+        </td>
+    </tr>
+}
+
+</table>

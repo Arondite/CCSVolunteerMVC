@@ -1,0 +1,50 @@
+﻿@model CCSVolunteerMVC.Models.VolunteerLanguage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VolunteerLanguage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.foreignLanguage.foreignLangName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foreignLanguage.foreignLangName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteer.volFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteer.volFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volLangFluencyLvl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volLangFluencyLvl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volLangLiteracyLvl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volLangLiteracyLvl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.volunteerLanguageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

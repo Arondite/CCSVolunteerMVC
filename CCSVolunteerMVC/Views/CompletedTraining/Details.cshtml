@@ -1,0 +1,50 @@
+﻿@model CCSVolunteerMVC.Models.CompletedTraining
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CompletedTraining</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteerTrainingID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteerTrainingID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cmpTrnDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmpTrnDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cmpTrnComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmpTrnComments)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.completedTrainingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

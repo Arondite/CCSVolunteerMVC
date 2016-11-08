@@ -1,0 +1,74 @@
+﻿@model CCSVolunteerMVC.Models.VolunteerTraining
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VolunteerTraining</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.volTrnName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volTrnName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volTrnDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volTrnDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volTrnCCSRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volTrnCCSRequired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volTrnStateRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volTrnStateRequired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volTrnMonthsValid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volTrnMonthsValid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volTrnBackgroundLvl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volTrnBackgroundLvl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volTrnMVR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volTrnMVR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.volunteerTrainingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

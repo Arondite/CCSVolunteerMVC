@@ -1,0 +1,72 @@
+﻿@model CCSVolunteerMVC.Models.CourtOrdered
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CourtOrdered</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderCaseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderCaseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedHoursRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedHoursRequired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedSexOrViolentCrime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedSexOrViolentCrime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedOneMonthLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedOneMonthLimit)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.VolunteerLanguage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.foreignLanguage.foreignLangName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volunteer.volFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volLangFluencyLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volLangLiteracyLvl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.foreignLanguage.foreignLangName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volunteer.volFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volLangFluencyLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volLangLiteracyLvl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.volunteerLanguageID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.volunteerLanguageID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.volunteerLanguageID })
+        </td>
+    </tr>
+}
+
+</table>

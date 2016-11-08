@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.CompletedTraining>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volunteerTrainingID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cmpTrnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cmpTrnComments)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.volunteerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volunteerTrainingID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cmpTrnDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cmpTrnComments)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.completedTrainingID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.completedTrainingID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.completedTrainingID })
+        </td>
+    </tr>
+}
+
+</table>

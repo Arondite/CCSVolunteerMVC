@@ -1,0 +1,82 @@
+﻿@model CCSVolunteerMVC.Models.VolunteerGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VolunteerGroup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpPasswordHash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpPasswordHash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpAddress1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpAddress1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpAddress2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpAddress2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpZip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpZip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGrpIsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGrpIsActive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.volunteerGroupID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

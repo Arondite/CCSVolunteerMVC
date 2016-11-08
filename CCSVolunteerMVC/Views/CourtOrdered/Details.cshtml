@@ -1,0 +1,66 @@
+﻿@model CCSVolunteerMVC.Models.CourtOrdered
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CourtOrdered</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderCaseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderCaseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedHoursRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedHoursRequired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedSexOrViolentCrime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedSexOrViolentCrime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.crtOrderedOneMonthLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.crtOrderedOneMonthLimit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.courtOrderedID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

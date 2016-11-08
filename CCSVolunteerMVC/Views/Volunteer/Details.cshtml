@@ -1,0 +1,98 @@
+﻿@model CCSVolunteerMVC.Models.Volunteer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Volunteer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.volFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volDOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volPin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volPin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volJoinDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volJoinDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volsCourtOrdered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volsCourtOrdered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ethnicityID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ethnicityID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volsClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volsClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volsActive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.volunteerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

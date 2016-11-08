@@ -1,0 +1,74 @@
+﻿@model CCSVolunteerMVC.Models.PositionLocation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PositionLocation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.posLocationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posLocationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posLocationStreet1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posLocationStreet1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posLocationStreet2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posLocationStreet2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posLocationCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posLocationCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posLocationState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posLocationState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posLocationZip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posLocationZip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posLocationNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posLocationNotes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.positionLocationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

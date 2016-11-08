@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.VolunteerGroup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpPasswordHash)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpAddress1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpAddress2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpZip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGrpIsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpPasswordHash)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpAddress1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpAddress2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpZip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGrpIsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.volunteerGroupID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.volunteerGroupID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.volunteerGroupID })
+        </td>
+    </tr>
+}
+
+</table>

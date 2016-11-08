@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.HoursWorked>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.positionLocationID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hrsWrkdIDType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hrsWrkdTimeIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hrsWrkdTimeOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userAcctID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modifiedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hrsWrkedSchedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volunteerGroupID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hrsWrkdQty)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.positionLocationID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hrsWrkdIDType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hrsWrkdTimeIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hrsWrkdTimeOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userAcctID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modifiedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hrsWrkedSchedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volunteerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volunteerGroupID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hrsWrkdQty)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.hoursWorkedID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.hoursWorkedID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.hoursWorkedID })
+        </td>
+    </tr>
+}
+
+</table>

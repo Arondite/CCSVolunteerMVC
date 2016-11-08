@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.CourtOrdered>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.crtOrderCaseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.crtOrderedHoursRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.crtOrderedStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.crtOrderedSexOrViolentCrime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.crtOrderedOneMonthLimit)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.volunteerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.crtOrderCaseNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.crtOrderedHoursRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.crtOrderedStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.crtOrderedSexOrViolentCrime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.crtOrderedOneMonthLimit)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.courtOrderedID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.courtOrderedID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.courtOrderedID })
+        </td>
+    </tr>
+}
+
+</table>

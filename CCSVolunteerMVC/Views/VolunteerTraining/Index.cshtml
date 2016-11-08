@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.VolunteerTraining>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.volTrnName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volTrnDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volTrnCCSRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volTrnStateRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volTrnMonthsValid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volTrnBackgroundLvl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volTrnMVR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.volTrnName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volTrnDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volTrnCCSRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volTrnStateRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volTrnMonthsValid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volTrnBackgroundLvl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volTrnMVR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.volunteerTrainingID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.volunteerTrainingID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.volunteerTrainingID })
+        </td>
+    </tr>
+}
+
+</table>

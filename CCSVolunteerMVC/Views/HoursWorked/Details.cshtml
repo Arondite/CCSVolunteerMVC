@@ -1,0 +1,98 @@
+﻿@model CCSVolunteerMVC.Models.HoursWorked
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HoursWorked</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.positionLocationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.positionLocationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hrsWrkdIDType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hrsWrkdIDType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hrsWrkdTimeIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hrsWrkdTimeIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hrsWrkdTimeOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hrsWrkdTimeOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userAcctID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userAcctID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hrsWrkedSchedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hrsWrkedSchedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volunteerGroupID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volunteerGroupID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hrsWrkdQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hrsWrkdQty)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.hoursWorkedID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
