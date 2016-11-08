@@ -34,12 +34,12 @@ namespace CCSVolunteerMVC.Migrations
 
             var ethnicity = new List<Ethnicity>(){
     new Ethnicity(){ ethnicityID = 1, ethName = "other"},
-    new Ethnicity(){ ethnicityID = 2, ethName = "white"},
-    new Ethnicity(){ ethnicityID = 3, ethName = "black or african-american"},
-    new Ethnicity(){ ethnicityID = 4, ethName = "asian"},
-    new Ethnicity(){ ethnicityID = 5, ethName = "hispanic"},
-    new Ethnicity(){ ethnicityID = 6, ethName = "american indian or alaskan native"},
-    new Ethnicity(){ ethnicityID = 7, ethName = "native hawaiian or pacific islander"}
+	new Ethnicity(){ ethnicityID = 2, ethName = "white"},
+	new Ethnicity(){ ethnicityID = 3, ethName = "black or african-american"},
+	new Ethnicity(){ ethnicityID = 4, ethName = "asian"},
+	new Ethnicity(){ ethnicityID = 5, ethName = "hispanic"},
+	new Ethnicity(){ ethnicityID = 6, ethName = "american indian or alaskan native"},
+	new Ethnicity(){ ethnicityID = 7, ethName = "native hawaiian or pacific islander"}
 };
             ethnicity.ForEach(e => context.Ethnicities.Add(e));
             context.SaveChanges();

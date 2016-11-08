@@ -67,6 +67,7 @@ body {
 .footer{
 	position: absolute;
 	margin-top: 20px;
+	margin-left: 0px;
 	padding-top: 10px;
 	bottom: 0;
 	width: 100%;

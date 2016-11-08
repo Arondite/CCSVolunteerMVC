@@ -13,5 +13,9 @@ namespace CCSVolunteerMVC.Controllers
         {
             return View();
         }
-    }
+		public ActionResult AdminIntro()
+		{
+			return View();
+		}
+	}
 }
