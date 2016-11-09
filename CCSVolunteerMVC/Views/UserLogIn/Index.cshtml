@@ -2,7 +2,14 @@
 	ViewBag.Title = "UserLogIn";
 	if (IsPost)
 	{
-
+		var username = Request["username"];
+		var password = Request["password"];
+		if (username == "CCSAdmin" && password == "CCSAdmin")
+		{
+			ViewBag.Admin = 1;
+			Response.Redirect("~/UserLogIn/AdminIntro");
+			
+		}
 	}
 }
 <!--PHP Start-->

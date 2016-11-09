@@ -9,14 +9,50 @@ namespace CCSVolunteerMVC.Models
  
     public class Volunteer
     {
-        public int volunteerID { get; set; }
+		private int _VolPin;
+		public int volunteerID { get; set; }
 		[Display(Name = "First Name")]
-        public string volFirstName { get; set; }
+        public string volFirstName{ get; set;}
 		[Display(Name = "Last Name")]
 		public string volLastName { get; set; }
 		[Display(Name = "Date of Birth")]
+		[DataType(DataType.Date)]
 		public DateTime volDOB { get; set; }
-        public int volPin { get; set; }
+        public int volPin
+		{
+			get
+			{
+				if (_VolPin > 0)
+				{
+					return _VolPin;
+				}
+				else
+				{
+					string pinValue = null;
+					string tempPin = volDOB.ToString();
+					string[] pinArr = tempPin.Split('/');
+					pinArr[2] = pinArr[2].Split(' ').ElementAt(0);
+					pinArr[2] = pinArr[2].Substring(2, 2);
+					if (pinArr[0].Length == 1)
+					{
+						pinArr[0] = "0" + pinArr[0];
+					}
+					foreach (var item in pinArr)
+					{
+						pinValue += item;
+					}
+					if (int.TryParse(pinValue, out _VolPin))
+					{
+						return _VolPin;
+					}
+					return 0;
+				}
+			}
+			set
+			{
+				volPin = value;
+			}
+		}
 		[Display(Name = "Gender")]
 		public string volGender { get; set; }
 		[Display(Name = "Join Date")]
