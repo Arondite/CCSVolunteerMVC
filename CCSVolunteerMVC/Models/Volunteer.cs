@@ -56,6 +56,7 @@ namespace CCSVolunteerMVC.Models
 		[Display(Name = "Gender")]
 		public string volGender { get; set; }
 		[Display(Name = "Join Date")]
+		[DataType(DataType.Date)]
 		public DateTime volJoinDate { get; set; }
 		[Display(Name = "Court Ordered")]
 		public int volsCourtOrdered { get; set; }
