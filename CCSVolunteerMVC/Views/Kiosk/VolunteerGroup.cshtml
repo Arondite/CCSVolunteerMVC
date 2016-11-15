@@ -1,0 +1,26 @@
+﻿
+@{
+	ViewBag.Title = "Kiosk Volunteer or Group";
+	var volunteer = Request["Volunteer"];
+	var Group = Request["Group"];
+	var clockIn = Request["In"];
+	var clockOut = Request["Out"];
+	if (IsPost)
+	{
+		if (!string.IsNullOrWhiteSpace(volunteer))
+		{
+			Response.Redirect("");
+		} else if (!string.IsNullOrWhiteSpace(Group))
+		{
+			Response.Redirect("");
+		}
+	}
+}
+
+<h2>Kiosk Volunteer or Group</h2>
+<form action="" method="post" class="form-horizontal" id="login">
+	<div class="col-sm-offset-2 col-sm-5">
+		<input class="btn btn-primary btn-lg btn-block" name="Volunteer" type="submit" id="Volunteer" formmethod="POST" title="Volunteer" value="Volunteer">
+		<input class="btn btn-secondary btn-lg btn-block" name="Group" type="submit" id="Group" formmethod="POST" title="Group" value="Group">
+	</div>
+</form>

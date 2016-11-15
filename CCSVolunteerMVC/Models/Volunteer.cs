@@ -50,7 +50,7 @@ namespace CCSVolunteerMVC.Models
 			}
 			set
 			{
-				volPin = value;
+				_VolPin = value;
 			}
 		}
 		[Display(Name = "Gender")]

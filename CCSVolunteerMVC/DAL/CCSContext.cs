@@ -21,9 +21,7 @@ namespace CCSVolunteerMVC.DAL
         public DbSet<VolunteerGroup> VolunteerGroups { get; set; }
         public DbSet<PositionLocation> PositionLocations { get; set; }
         public DbSet<HoursWorked> HoursWorkeds { get; set; }
-
         public DbSet<CompletedTraining> CompletedTrainings {get; set; }
-
         public DbSet<VolunteerTraining> VolunteerTrainings { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

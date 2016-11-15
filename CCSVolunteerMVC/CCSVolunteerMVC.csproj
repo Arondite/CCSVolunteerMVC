@@ -207,6 +207,7 @@
     <Compile Include="Controllers\GroupContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HoursWorkedController.cs" />
+    <Compile Include="Controllers\KioskController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PositionLocationController.cs" />
     <Compile Include="Controllers\UserLogInController.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactType.cs" />
     <Compile Include="Models\CourtOrdered.cs" />
+    <Compile Include="Models\CurrentUsers.cs" />
     <Compile Include="Models\Ethnicity.cs" />
     <Compile Include="Models\ForeignLanguage.cs" />
     <Compile Include="Models\GroupContact.cs" />
@@ -235,6 +237,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PositionLocation.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Models\VolunteerGroup.cs" />
     <Compile Include="Models\VolunteerLanguage.cs" />
@@ -375,6 +378,10 @@
     <Content Include="Views\VolunteerTraining\Index.cshtml" />
     <Content Include="Views\UserLogIn\AdminIntro.cshtml" />
     <Content Include="Views\UserLogIn\Index.cshtml" />
+    <Content Include="Views\Kiosk\VolunteerGroup.cshtml" />
+    <Content Include="Views\Kiosk\Index.cshtml" />
+    <Content Include="Views\Kiosk\VolunteerPin.cshtml" />
+    <Content Include="Views\Kiosk\VolunteerClock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
