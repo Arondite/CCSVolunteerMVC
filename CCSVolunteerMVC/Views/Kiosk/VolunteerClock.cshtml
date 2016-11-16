@@ -1,7 +1,39 @@
-﻿
+﻿@model IEnumerable<CCSVolunteerMVC.Models.Volunteer>
+@using CCSVolunteerMVC.Models;
 @{
-    ViewBag.Title = "Volunteer Clock";
+	ViewBag.Title = "Volunteer Clock";
+	IEnumerable<int> volunteerPinCollection = new List<int>();
+	if (IsPost)
+	{
+		volunteerPinCollection = Model.Select(i => i.volPin).ToList();
+		var password = Request["Password"];
+		int pin;
+		if (int.TryParse(password, out pin))
+		{
+			if (volunteerPinCollection.Contains(pin))
+			{
+				Volunteer tempVolunteer = Model.Where(i => i.volPin == pin).Single();
+				User tempUser = new User();
+				//CurrentUsers.AddUser(null);
+			} else
+			{
+				//Logic towards going to error message
+			}
+		}
+	}
 }
 
-<h2>Volunteer Clock</h2>
+<h2>Volunteer Sign In</h2>
 
+<form action="@Url.Action("VolunteerClock", "Kiosk")" method="post" class="form-horizontal" id="login">
+	<div class="form-group">
+		<div class="row">
+			<label class="col-md-2" for="Password">Volunteer's Pin:</label>
+			<input class="form-control col-md-10" type="password" name="Password" id="Password">
+		</div>
+		<div class="row">
+			<span class="col-md-2"></span>
+			<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Password">
+		</div>
+	</div>
+</form>

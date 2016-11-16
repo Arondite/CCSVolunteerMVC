@@ -9,8 +9,9 @@ namespace CCSVolunteerMVC.Controllers
 {
     public class KioskController : Controller
     {
-        // GET: Kiosk
-        public ActionResult Index()
+		private CCSContext db = new CCSContext();
+		// GET: Kiosk
+		public ActionResult Index()
         {
             return View();
         }
@@ -27,8 +28,7 @@ namespace CCSVolunteerMVC.Controllers
 
 		public ActionResult VolunteerClock()
 		{
-			var db = new CCSContext();
-			return View();
+			return View(db.Volunteers.ToList());
 		}
     }
 }
