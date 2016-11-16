@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.Volunteer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Volunteers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.volFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volDOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volPin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volJoinDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model =>  model.volsCourtOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ethnicityID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volsClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.volFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volDOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volPin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volJoinDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volsCourtOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ethnicityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volsClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.volunteerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.volunteerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.volunteerID })
+        </td>
+    </tr>
+}
+
+</table>

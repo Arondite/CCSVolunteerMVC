@@ -1,4 +1,4 @@
-﻿@model CCSVolunteerMVC.Models.Volunteer
+﻿@model CCSVolunteerMVC.ViewModels.VolunteerViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -11,88 +11,108 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.volFirstName)
+            @*@Html.DisplayNameFor(model => model.volFirstName)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volFirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volFirstName)
+            @*@Html.DisplayFor(model => model.volFirstName)*@
+			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volFirstName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volLastName)
+            @*@Html.DisplayNameFor(model => model.volLastName)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volLastName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volLastName)
+            @*@Html.DisplayFor(model => model.volLastName)*@
+			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volLastName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volDOB)
+            @*@Html.DisplayNameFor(model => model.volDOB)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volDOB)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volDOB)
+            @*@Html.DisplayFor(model => model.volDOB)*@
+			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volDOB)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volPin)
+            @*@Html.DisplayNameFor(model => model.volPin)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volPin)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volPin)
+            @*@Html.DisplayFor(model => model.volPin)*@
+			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volPin)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volGender)
+            @*@Html.DisplayNameFor(model => model.volGender)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volGender)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volGender)
+            @*@Html.DisplayFor(model => model.volGender)*@
+			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volGender)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volJoinDate)
+            @*@Html.DisplayNameFor(model => model.volJoinDate)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volJoinDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volJoinDate)
+            @*@Html.DisplayFor(model => model.volJoinDate)*@
+			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volJoinDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volsCourtOrdered)
+            @*@Html.DisplayNameFor(model => model.volsCourtOrdered)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsCourtOrdered)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volsCourtOrdered)
+            @*@Html.DisplayFor(model => model.volsCourtOrdered)*@
+			@Html.DisplayFor(model => model.CourtOrdered.ElementAt(0).Value)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ethnicityID)
+            @*@Html.DisplayNameFor(model => model.ethnicityID)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).ethnicityID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ethnicityID)
+            @*@Html.DisplayFor(model => model.ethnicityID)*@
+			@Html.DisplayFor(model => model.Ethnicity.ElementAt(0).ethName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volsClient)
+            @*@Html.DisplayNameFor(model => model.volsClient)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsClient)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volsClient)
+            @*@Html.DisplayFor(model => model.volsClient)*@
+			@Html.DisplayFor(model => model.IsClient.ElementAt(0).Value)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.volsActive)
+            @*@Html.DisplayNameFor(model => model.volsActive)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsActive)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.volsActive)
+            @*@Html.DisplayFor(model => model.volsActive)*@
+			@Html.DisplayFor(model => model.IsActive.ElementAt(0).Value)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.volunteerID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Volunteer.ElementAt(0).volunteerID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

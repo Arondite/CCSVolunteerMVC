@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CCSVolunteerMVC.DAL;
 using CCSVolunteerMVC.Models;
+using CCSVolunteerMVC.ViewModels;
 
 namespace CCSVolunteerMVC.Controllers
 {
@@ -16,14 +17,21 @@ namespace CCSVolunteerMVC.Controllers
         private CCSContext db = new CCSContext();
 
         // GET: Volunteer
-        public ActionResult Index()
-        {
-            return View(db.Volunteers.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    return View(db.Volunteers.ToList());
+        //}
+
+		public ActionResult Index()
+		{
+			VolunteerViewModel tempModel = new VolunteerViewModel(db.Volunteers.ToList(), db.Ethnicities.ToList());
+			return View(tempModel);
+		}
 
         // GET: Volunteer/Details/5
         public ActionResult Details(int? id)
         {
+			List<Volunteer> volunteerList = new List<Volunteer>();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -33,7 +41,9 @@ namespace CCSVolunteerMVC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(volunteer);
+			volunteerList.Add(volunteer);
+			VolunteerViewModel tempModel = new VolunteerViewModel(volunteerList, db.Ethnicities.ToList());
+            return View(tempModel);
         }
 
         // GET: Volunteer/Create

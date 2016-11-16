@@ -1,87 +1,107 @@
-﻿@model IEnumerable<CCSVolunteerMVC.Models.Volunteer>
-
+﻿@model CCSVolunteerMVC.ViewModels.VolunteerViewModel
+@using CCSVolunteerMVC.Models;
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Test Index";
+	List<Volunteer> volunteerCollection = Model.Volunteer.ToList();
+	List<Ethnicity> EthnicityCollection = Model.Ethnicity.ToList();
+	List<BooleanTitleMatch> isActive = Model.IsActive.ToList();
+	List<BooleanTitleMatch> isClient = Model.IsClient.ToList();
+	List<BooleanTitleMatch> courtOrdered = Model.CourtOrdered.ToList();
 }
 
 <h2>Volunteers</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.volFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volDOB)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volPin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volGender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volJoinDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volsCourtOrdered)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ethnicityID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volsClient)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.volsActive)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@*@Html.DisplayNameFor(model => model.volLastName)*@
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volFirstName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volLastName)
+			@*@Html.DisplayNameFor(model => model.volLastName)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volDOB)
+			@*@Html.DisplayNameFor(model => model.volDOB)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volPin)
+			@*@Html.DisplayNameFor(model => model.volPin)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volGender)
+			@*@Html.DisplayNameFor(model => model.volGender)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volJoinDate)
+			@*@Html.DisplayNameFor(model => model.volJoinDate)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsCourtOrdered)
+			@*@Html.DisplayNameFor(model => model.volsCourtOrdered)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).ethnicityID)
+			@*@Html.DisplayNameFor(model => model.ethnicityID)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsClient)
+			@*@Html.DisplayNameFor(model => model.volsClient)*@
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsActive)
+			@*@Html.DisplayNameFor(model => model.volsActive)*@
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.volFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volDOB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volPin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volGender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volJoinDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volsCourtOrdered)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ethnicityID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volsClient)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.volsActive)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.volunteerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.volunteerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.volunteerID })
-        </td>
-    </tr>
-}
+	@for(int i = 0; i < volunteerCollection.Count; i++)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volFirstName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volLastName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volDOB)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volPin)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volGender)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volJoinDate)
+			</td>
+			<td>
+				@*@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volsCourtOrdered)*@
+				@Html.DisplayFor(modelItem => courtOrdered.ElementAt(i).Value)
+			</td>
+			<td>
+				@*@Html.DisplayFor(modelItem => item.ethnicityID)*@
+				@Html.DisplayFor(modelItem => EthnicityCollection.ElementAt(i).ethName)
+			</td>
+			<td>
+				@*@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volsClient)*@
+				@Html.DisplayFor(modelItem => isClient.ElementAt(i).Value)
+			</td>
+			<td>
+				@*@Html.DisplayFor(modelItem => volunteerCollection.ElementAt(i).volsActive)*@
+				@Html.DisplayFor(modelItem => isActive.ElementAt(i).Value)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = volunteerCollection.ElementAt(i).volunteerID }) |
+				@Html.ActionLink("Details", "Details", new { id = volunteerCollection.ElementAt(i).volunteerID }) |
+				@Html.ActionLink("Delete", "Delete", new { id = volunteerCollection.ElementAt(i).volunteerID })
+			</td>
+		</tr>
+	}
 
 </table>

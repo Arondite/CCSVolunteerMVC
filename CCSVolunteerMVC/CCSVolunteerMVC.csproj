@@ -223,8 +223,29 @@
     <Compile Include="Migrations\201611090115047_InitialSeed.Designer.cs">
       <DependentUpon>201611090115047_InitialSeed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611161901498_UpdateOfPin.cs" />
+    <Compile Include="Migrations\201611161901498_UpdateOfPin.Designer.cs">
+      <DependentUpon>201611161901498_UpdateOfPin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611161924282_FixedCourtOrderedLogic.cs" />
+    <Compile Include="Migrations\201611161924282_FixedCourtOrderedLogic.Designer.cs">
+      <DependentUpon>201611161924282_FixedCourtOrderedLogic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611161931310_CheckingAdditionalParameters.cs" />
+    <Compile Include="Migrations\201611161931310_CheckingAdditionalParameters.Designer.cs">
+      <DependentUpon>201611161931310_CheckingAdditionalParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611161933482_TakingBackStupidity.cs" />
+    <Compile Include="Migrations\201611161933482_TakingBackStupidity.Designer.cs">
+      <DependentUpon>201611161933482_TakingBackStupidity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611161952336_DropDownBoxDisplay.cs" />
+    <Compile Include="Migrations\201611161952336_DropDownBoxDisplay.Designer.cs">
+      <DependentUpon>201611161952336_DropDownBoxDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BooleanTitleMatch.cs" />
     <Compile Include="Models\CompletedTraining.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactType.cs" />
@@ -244,6 +265,7 @@
     <Compile Include="Models\VolunteerTraining.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\VolunteerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -360,7 +382,7 @@
     <Content Include="Views\Volunteer\Delete.cshtml" />
     <Content Include="Views\Volunteer\Details.cshtml" />
     <Content Include="Views\Volunteer\Edit.cshtml" />
-    <Content Include="Views\Volunteer\Index.cshtml" />
+    <Content Include="Views\Volunteer\OldIndex.cshtml" />
     <Content Include="Views\VolunteerGroup\Create.cshtml" />
     <Content Include="Views\VolunteerGroup\Delete.cshtml" />
     <Content Include="Views\VolunteerGroup\Details.cshtml" />
@@ -382,6 +404,7 @@
     <Content Include="Views\Kiosk\Index.cshtml" />
     <Content Include="Views\Kiosk\VolunteerPin.cshtml" />
     <Content Include="Views\Kiosk\VolunteerClock.cshtml" />
+    <Content Include="Views\Volunteer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -397,6 +420,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611090115047_InitialSeed.resx">
       <DependentUpon>201611090115047_InitialSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611161901498_UpdateOfPin.resx">
+      <DependentUpon>201611161901498_UpdateOfPin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611161924282_FixedCourtOrderedLogic.resx">
+      <DependentUpon>201611161924282_FixedCourtOrderedLogic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611161931310_CheckingAdditionalParameters.resx">
+      <DependentUpon>201611161931310_CheckingAdditionalParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611161933482_TakingBackStupidity.resx">
+      <DependentUpon>201611161933482_TakingBackStupidity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611161952336_DropDownBoxDisplay.resx">
+      <DependentUpon>201611161952336_DropDownBoxDisplay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

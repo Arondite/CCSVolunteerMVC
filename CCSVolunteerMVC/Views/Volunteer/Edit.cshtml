@@ -68,7 +68,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.volsCourtOrdered, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.volsCourtOrdered, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.volsCourtOrdered, new { htmlAttributes = new { @class = "form-control" } })*@
+				@Html.DropDownListFor(model => model.volsCourtOrdered, new List<SelectListItem> {
+					new SelectListItem() { Text = "Yes", Value = "1" },
+					new SelectListItem() { Text = "No", Value = "0" }
+				})
                 @Html.ValidationMessageFor(model => model.volsCourtOrdered, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -76,7 +80,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ethnicityID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ethnicityID, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.ethnicityID, new { htmlAttributes = new { @class = "form-control" } })*@
+				@Html.DropDownListFor(model => model.ethnicityID, new List<SelectListItem> {
+					new SelectListItem() { Text = "Yes", Value = "1"},
+					new SelectListItem() { Text = "No", Value = "0" }
+				})
                 @Html.ValidationMessageFor(model => model.ethnicityID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -84,7 +92,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.volsClient, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.volsClient, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.volsClient, new { htmlAttributes = new { @class = "form-control" } })*@
+				@Html.DropDownListFor(model => model.volsClient, new List<SelectListItem> {
+					new SelectListItem() { Text = "Yes", Value = "1" },
+					new SelectListItem() { Text = "No", Value = "0" }
+				})
                 @Html.ValidationMessageFor(model => model.volsClient, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -92,7 +104,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.volsActive, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.volsActive, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.volsActive, new { htmlAttributes = new { @class = "form-control" } })*@
+				@Html.DropDownListFor(model => model.volsActive, new List<SelectListItem> {
+					new SelectListItem() { Text = "Yes", Value = "1" },
+					new SelectListItem() { Text = "No", Value = "0" }
+				})
                 @Html.ValidationMessageFor(model => model.volsActive, "", new { @class = "text-danger" })
             </div>
         </div>
