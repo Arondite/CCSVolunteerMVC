@@ -2,23 +2,16 @@
 @using CCSVolunteerMVC.Models;
 @{
 	ViewBag.Title = "Volunteer Clock";
-	IEnumerable<int> volunteerPinCollection = new List<int>();
+	IEnumerable<string> volunteerPinCollection = new List<string>();
 	if (IsPost)
 	{
 		volunteerPinCollection = Model.Select(i => i.volPin).ToList();
 		var password = Request["Password"];
-		int pin;
-		if (int.TryParse(password, out pin))
+		if (volunteerPinCollection.Contains(password))
 		{
-			if (volunteerPinCollection.Contains(pin))
-			{
-				Volunteer tempVolunteer = Model.Where(i => i.volPin == pin).Single();
-				User tempUser = new User();
-				//CurrentUsers.AddUser(null);
-			} else
-			{
-				//Logic towards going to error message
-			}
+			Volunteer tempVolunteer = Model.Where(i => i.volPin == password).Single();
+			User tempUser = new User();
+			//CurrentUsers.AddUser(null);
 		}
 	}
 }

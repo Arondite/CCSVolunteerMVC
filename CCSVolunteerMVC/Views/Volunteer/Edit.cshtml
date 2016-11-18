@@ -36,7 +36,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.volDOB, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.volDOB, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.volDOB, new { htmlAttributes = new { @class = "form-control" } })*@
+				@Html.TextBoxFor(model => model.volDOB, new { @class = "form-control"})
                 @Html.ValidationMessageFor(model => model.volDOB, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -60,7 +61,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.volJoinDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.volJoinDate, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.volJoinDate, new { htmlAttributes = new { @class = "form-control" } })*@
+				@Html.TextBoxFor(model => model.volJoinDate, new { @class = "form-control"})
                 @Html.ValidationMessageFor(model => model.volJoinDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -82,8 +84,13 @@
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.ethnicityID, new { htmlAttributes = new { @class = "form-control" } })*@
 				@Html.DropDownListFor(model => model.ethnicityID, new List<SelectListItem> {
-					new SelectListItem() { Text = "Yes", Value = "1"},
-					new SelectListItem() { Text = "No", Value = "0" }
+					new SelectListItem() { Text = "Other", Value = "1" },
+					new SelectListItem() { Text = "White", Value = "2" },
+					new SelectListItem() { Text = "Black or African-American", Value="3" },
+					new SelectListItem() { Text = "Asian", Value = "4" },
+					new SelectListItem() { Text = "Hispanic", Value = "5" },
+					new SelectListItem() { Text = "American Indian or Alaskan Native" },
+					new SelectListItem() { Text = "Native Hawaiian or Pacific Islander", Value = "7" }
 				})
                 @Html.ValidationMessageFor(model => model.ethnicityID, "", new { @class = "text-danger" })
             </div>

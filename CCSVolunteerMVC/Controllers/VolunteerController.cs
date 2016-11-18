@@ -16,11 +16,21 @@ namespace CCSVolunteerMVC.Controllers
     {
         private CCSContext db = new CCSContext();
 
-        // GET: Volunteer
-        //public ActionResult Index()
-        //{
-        //    return View(db.Volunteers.ToList());
-        //}
+		// GET: Volunteer
+		//public ActionResult Index()
+		//{
+		//    return View(db.Volunteers.ToList());
+		//}
+		// GET: VolunteerSearch
+		public ActionResult VolunteerSearch(string searchString)
+		{
+			var viewModel = new VolunteerSearch();
+			if (!string.IsNullOrEmpty(searchString))
+			{
+				viewModel = new VolunteerSearch(searchString, db.Volunteers.ToList());
+			}
+			return View(viewModel);
+		}
 
 		public ActionResult Index()
 		{
@@ -32,7 +42,7 @@ namespace CCSVolunteerMVC.Controllers
         public ActionResult Details(int? id)
         {
 			List<Volunteer> volunteerList = new List<Volunteer>();
-            if (id == null)
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -103,7 +113,8 @@ namespace CCSVolunteerMVC.Controllers
         // GET: Volunteer/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+			List<Volunteer> volunteerList = new List<Volunteer>();
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -112,7 +123,9 @@ namespace CCSVolunteerMVC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(volunteer);
+			volunteerList.Add(volunteer);
+			VolunteerViewModel tempModel = new VolunteerViewModel(volunteerList, db.Ethnicities.ToList());
+			return View(tempModel);
         }
 
         // POST: Volunteer/Delete/5
