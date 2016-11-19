@@ -1,0 +1,100 @@
+﻿@model IEnumerable<CCSVolunteerMVC.Models.VolunteerGroup>
+@{
+	ViewBag.Title = "GroupClock";
+}
+
+<h2>GroupClock</h2>
+
+<ul class="nav nav-tabs">
+	<li class="active"><a href="@Url.Action("GroupClock", "Kiosk", "A")">value A</a></li>
+	<li><a name="B" href="#">B</a></li>
+	<li><a name="C" href="#">C</a></li>
+	<li><a name="D" href="#">D</a></li>
+	<li><a name="E" href="#">E</a></li>
+	<li><a name="F" href="#">F</a></li>
+	<li><a name="G" href="#">G</a></li>
+	<li><a name="H" href="#">H</a></li>
+	<li><a name="I" href="#">I</a></li>
+	<li><a name="J" href="#">J</a></li>
+	<li><a name="K" href="#">K</a></li>
+	<li><a name="L" href="#">L</a></li>
+	<li><a name="M" href="#">M</a></li>
+	<li><a name="N" href="#">N</a></li>
+	<li><a name="O" href="#">O</a></li>
+	<li><a name="P" href="#">P</a></li>
+	<li><a name="Q" href="#">Q</a></li>
+	<li><a name="R" href="#">R</a></li>
+	<li><a name="S" href="#">S</a></li>
+	<li><a name="T" href="#">T</a></li>
+	<li><a name="U" href="#">U</a></li>
+	<li><a name="V" href="#">V</a></li>
+	<li><a name="W" href="#">W</a></li>
+	<li><a name="X" href="#">X</a></li>
+	<li><a name="Y" href="#">Y</a></li>
+	<li><a name="Z" href="#">Z</a></li>
+</ul>
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpUserName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpPasswordHash)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpAddress1)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpAddress2)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpState)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpZip)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.volGrpIsActive)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpUserName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpPasswordHash)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpAddress1)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpAddress2)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpState)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpZip)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volGrpIsActive)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.volunteerGroupID }) |
+				@Html.ActionLink("Details", "Details", new { id = item.volunteerGroupID }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.volunteerGroupID })
+			</td>
+		</tr>
+	}
+</table>
