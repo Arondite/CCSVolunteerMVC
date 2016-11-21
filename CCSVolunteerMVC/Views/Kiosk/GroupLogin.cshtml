@@ -1,0 +1,90 @@
+﻿@model CCSVolunteerMVC.Models.VolunteerGroup
+
+@{
+	ViewBag.Title = "Details of group";
+	var counter = Request["NumberOfPeople"];
+	var pin = Request["Pin"];
+	int numberOfPeople;
+	if (int.TryParse(counter, out numberOfPeople))
+	{
+		if(Model.volGrpPasswordHash == pin && numberOfPeople > 0)
+		{
+			@Url.Action("","","")
+		}
+	}
+}
+
+<h2>Volunteer Group</h2>
+
+<div>
+	<h4>Info</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.volGrpName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.volGrpName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.volGrpUserName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.volGrpUserName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.volGrpAddress1)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.volGrpAddress1)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.volGrpAddress2)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.volGrpAddress2)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.volGrpState)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.volGrpState)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.volGrpZip)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.volGrpZip)
+		</dd>
+
+	</dl>
+</div>
+<form action="" method="post">
+	<div class="form-group row">
+		<div class="col-sm-10">
+			<input name="Pin" type="password" class="form-control" id="inputPassword" placeholder="Group's Pin">
+		</div>
+		<div class="col-md-10">
+			<input name="NumberOfPeople" class="form-control" type="number" value="" id="groupPin" placeholder="Number of People" />
+		</div>
+		<div class="col-md-10">
+			<input class="btn btn-primary btn-lg" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
+			<a href="@Url.Action("GroupClock", "Kiosk", new { alphabetChar = "A"})">&nbspBack to Group Listing</a>
+		</div>
+	</div>
+</form>
+<p>
+	@*@Html.ActionLink("Edit", "Edit", new { id = Model.volunteerGroupID }) |
+	@Html.ActionLink("Back to List", "Index")*@
+</p>

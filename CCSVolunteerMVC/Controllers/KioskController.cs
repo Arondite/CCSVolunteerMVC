@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using CCSVolunteerMVC.DAL;
 using CCSVolunteerMVC.Models;
+using CCSVolunteerMVC.ViewModels;
+using System.Net;
 
 namespace CCSVolunteerMVC.Controllers
 {
@@ -17,19 +19,20 @@ namespace CCSVolunteerMVC.Controllers
             return View();
         }
 
-		public ActionResult VolunteerGroup()
+		public ActionResult VolunteerGroup(string clock)
 		{
-			return View();
+			List<string> tempCollection = new List<string>();
+			if (!string.IsNullOrWhiteSpace(clock))
+			{
+				tempCollection.Add(clock);
+			}
+			return View(tempCollection);
 		}
 
-		public ActionResult VolunteerPin()
+		public ActionResult VolunteerClock(string action)
 		{
-			return View();
-		}
-
-		public ActionResult VolunteerClock()
-		{
-			return View(db.Volunteers.ToList());
+			VolunteerClockModel volunteerClockModel = new VolunteerClockModel(db.Volunteers.ToList(), action);
+			return View(volunteerClockModel);
 		}
 
 		//public ActionResult GroupClock()
@@ -50,10 +53,23 @@ namespace CCSVolunteerMVC.Controllers
 			{
 				if (item == alphabetString)
 				{
-					groupList = (db.VolunteerGroups.Where(g => g.volGrpName.Contains(item)).ToList());
+					groupList = (db.VolunteerGroups.Where(g => g.volGrpName.IndexOf(item) == 0).ToList());
 				}
 			}
 			return View(groupList);
 		}
-    }
+		public ActionResult GroupLogin(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			VolunteerGroup volunteerGroup = db.VolunteerGroups.Find(id);
+			if (volunteerGroup == null)
+			{
+				return HttpNotFound();
+			}
+			return View(volunteerGroup);
+		}
+	}
 }

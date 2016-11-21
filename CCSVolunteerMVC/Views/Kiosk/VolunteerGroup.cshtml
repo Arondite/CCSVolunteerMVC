@@ -1,24 +1,48 @@
-﻿
+﻿@model IEnumerable<string>
 @{
 	ViewBag.Title = "Kiosk Volunteer or Group";
 	var volunteer = Request["Volunteer"];
 	var Group = Request["Group"];
 	var clockIn = Request["In"];
 	var clockOut = Request["Out"];
-	if (IsPost)
+	string action;
+	if (Model.Count() < 1)
+	{
+		if (!string.IsNullOrWhiteSpace(clockIn))
+		{
+			action = clockIn;
+		}
+		else
+		{
+			action = clockOut;
+		}
+	}
+	else
+	{
+		action = Model.ElementAt(0);
+	}
+	@*if (IsPost)
 	{
 		if (!string.IsNullOrWhiteSpace(volunteer))
 		{
-			Response.Redirect("~/CCSVolunteerMVC/Views/Kiosk/VolunteerClock");
-		} else if (!string.IsNullOrWhiteSpace(Group))
-		{
-			Response.Redirect("");
+			//Response.Redirect("~/CCSVolunteerMVC/Views/Kiosk/VolunteerClock.cshtml");
+			if (Model.ElementAt(0) == "In")
+			{
+				@Url.Action("VolunteerClock", "Kiosk", new { action = "In" })
+			}
+			else {
+				@Url.Action("VolunteerClock", "Kiosk", new { action = "Out"})
+			}
 		}
-	}
+		else if (!string.IsNullOrWhiteSpace(Group))
+		{
+			@Url.Action("GroupClock", "Kiosk", new { alphabetChar = "A" });
+		}
+	}*@
 }
 
 <h2>Kiosk Volunteer or Group</h2>
-<form action="" method="post" class="form-horizontal" id="login">
+<form action="@Url.Action("VolunteerClock", "Kiosk", new { clock = action.ToString() })" method="post" class="form-horizontal" id="login">
 	<div class="col-sm-offset-2 col-sm-5">
 		<input class="btn btn-primary btn-lg btn-block" name="Volunteer" type="submit" id="Volunteer" formmethod="POST" title="Volunteer" value="Volunteer">
 		<input class="btn btn-secondary btn-lg btn-block" name="Group" type="submit" id="Group" formmethod="POST" title="Group" value="Group">

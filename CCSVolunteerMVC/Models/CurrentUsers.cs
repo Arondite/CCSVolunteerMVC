@@ -17,7 +17,10 @@ namespace CCSVolunteerMVC.Models
 
 		public static void AddUser(User user)
 		{
-			_users.Add(user);
+			if(user != null)
+			{
+				_users.Add(user);
+			}
 		}
 
 		public static void RemoveUser(int id)

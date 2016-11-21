@@ -4,7 +4,7 @@
 }
 
 <h2>In or Out</h2>
-<form action="@Url.Action("VolunteerGroup", "Kiosk")" method="post" class="form-horizontal" id="login">
+<form action="@Url.Action("VolunteerGroup", "Kiosk", new { action = "" })" method="post" class="form-horizontal" id="login">
 	<div class="col-sm-offset-2 col-sm-10">
 		<input class="btn btn-primary btn-lg btn-block" name="In" type="submit" id="In" formmethod="POST" title="In" value="In">
 		<input class="btn btn-secondary btn-lg btn-block" name="Out" type="submit" id="Out" formmethod="POST" title="Out" value="Out">

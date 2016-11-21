@@ -1,17 +1,25 @@
-﻿@model IEnumerable<CCSVolunteerMVC.Models.Volunteer>
-@using CCSVolunteerMVC.Models;
+﻿@using CCSVolunteerMVC.Models;
+@using CCSVolunteerMVC.ViewModels;
+@model VolunteerClockModel
 @{
 	ViewBag.Title = "Volunteer Clock";
+	var group = Request["Group"];
+	if (!string.IsNullOrWhiteSpace(group))
+	{
+		//@Url.Action("GroupClock", "Kiosk", new { alphabetChar = "A"})
+		Response.Redirect("~/Kiosk/GroupClock");
+	}
 	IEnumerable<string> volunteerPinCollection = new List<string>();
+
 	if (IsPost)
 	{
-		volunteerPinCollection = Model.Select(i => i.volPin).ToList();
+		volunteerPinCollection = Model.Volunteers.Select(i => i.volPin).ToList();
 		var password = Request["Password"];
 		if (volunteerPinCollection.Contains(password))
 		{
-			Volunteer tempVolunteer = Model.Where(i => i.volPin == password).Single();
-			User tempUser = new User();
-			//CurrentUsers.AddUser(null);
+			Volunteer tempVolunteer = Model.Volunteers.Where(i => i.volPin == password).Single();
+			User tempUser = new User(tempVolunteer.volunteerID, 1, 1, 3);
+			CurrentUsers.AddUser(tempUser);
 		}
 	}
 }

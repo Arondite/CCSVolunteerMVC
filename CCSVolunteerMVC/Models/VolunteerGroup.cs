@@ -9,11 +9,11 @@ namespace CCSVolunteerMVC.Models
     public class VolunteerGroup
     {
         public int volunteerGroupID { get; set; }
-		[Display(Name = "Volunteer Group Name")]
+		[Display(Name = "Group Name")]
         public string volGrpName { get; set; }
-		[Display(Name = "Volunteer Group User Name")]
+		[Display(Name = "User Name")]
         public string volGrpUserName { get; set; }
-		[Display(Name = "Volunteer Group Password")]
+		[Display(Name = "Group Password")]
         public string volGrpPasswordHash { get; set; }
 		[Display(Name = "Address 1")]
         public string volGrpAddress1 { get; set; }
