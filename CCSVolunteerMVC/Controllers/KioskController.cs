@@ -71,5 +71,17 @@ namespace CCSVolunteerMVC.Controllers
 			}
 			return View(volunteerGroup);
 		}
+		public ActionResult VolunteerPasswordList(int? password)
+		{
+			VolunteerViewModel volunteerViewModel = new VolunteerViewModel(db.Volunteers.ToList(), db.Ethnicities.ToList());
+			return View(volunteerViewModel);
+		}
+		public ActionResult VolunteerDetails(int? id)
+		{
+			IEnumerable<Volunteer> volunteer = new List<Volunteer>();
+			volunteer = db.Volunteers.Where(v => v.volunteerID == id).ToList();
+			VolunteerViewModel volunteerViewModel = new VolunteerViewModel(volunteer, db.Ethnicities.ToList());
+			return View(volunteerViewModel);
+		}
 	}
 }

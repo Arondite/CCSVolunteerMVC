@@ -7,7 +7,7 @@ namespace CCSVolunteerMVC.Models
 {
 	public static class CurrentUsers
 	{
-		private static List<User> _users;
+		private static List<User> _users = new List<User>();
 
 		public static List<User> Users
 		{

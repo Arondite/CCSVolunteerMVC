@@ -17,16 +17,17 @@
 		var password = Request["Password"];
 		if (volunteerPinCollection.Contains(password))
 		{
-			Volunteer tempVolunteer = Model.Volunteers.Where(i => i.volPin == password).Single();
-			User tempUser = new User(tempVolunteer.volunteerID, 1, 1, 3);
-			CurrentUsers.AddUser(tempUser);
+			//Volunteer tempVolunteer = Model.Volunteers.Where(i => i.volPin == password).Single();
+			//User tempUser = new User(tempVolunteer.volunteerID, 1, 1, 3);
+			//CurrentUsers.AddUser(tempUser);
+			//Response.Redirect(string.Format("~/Kiosk/VolunteerPasswordList/{0}", password)); 
 		}
 	}
 }
 
 <h2>Volunteer Sign In</h2>
 
-<form action="@Url.Action("VolunteerClock", "Kiosk")" method="post" class="form-horizontal" id="login">
+<form action="@Url.Action("VolunteerPasswordList", "Kiosk")" method="post" class="form-horizontal" id="login">
 	<div class="form-group">
 		<div class="row">
 			<label class="col-md-2" for="Password">Volunteer's Pin:</label>
