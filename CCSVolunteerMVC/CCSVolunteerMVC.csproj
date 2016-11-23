@@ -243,6 +243,10 @@
     <Compile Include="Migrations\201611161952336_DropDownBoxDisplay.Designer.cs">
       <DependentUpon>201611161952336_DropDownBoxDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611222340201_UpdateGroup.cs" />
+    <Compile Include="Migrations\201611222340201_UpdateGroup.Designer.cs">
+      <DependentUpon>201611222340201_UpdateGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BooleanTitleMatch.cs" />
@@ -441,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611161952336_DropDownBoxDisplay.resx">
       <DependentUpon>201611161952336_DropDownBoxDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611222340201_UpdateGroup.resx">
+      <DependentUpon>201611222340201_UpdateGroup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

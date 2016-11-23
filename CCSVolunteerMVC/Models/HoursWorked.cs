@@ -14,9 +14,7 @@ namespace CCSVolunteerMVC.Models
 
         [StringLength(1)]
         [Display(Name = "Hours Worked ID Type")]
-
         public string hrsWrkdIDType { get; set; }
-
 
         [Display(Name = "Hours Worked Time In")]
         [DataType(DataType.Date)]
@@ -29,9 +27,7 @@ namespace CCSVolunteerMVC.Models
         public DateTime hrsWrkdTimeOut { get; set; }
         public int userAcctID { get; set; }
         //todo find out what object to tie to userAcctID for code first
-
-
-        
+		
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime modifiedOn { get; set; }

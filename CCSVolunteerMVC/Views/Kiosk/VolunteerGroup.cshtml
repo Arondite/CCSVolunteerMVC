@@ -11,10 +11,12 @@
 		if (!string.IsNullOrWhiteSpace(clockIn))
 		{
 			action = clockIn;
+			App.TimeInTimeOut = action;
 		}
 		else
 		{
 			action = clockOut;
+			App.TimeInTimeOut = action;
 		}
 	}
 	else

@@ -17,12 +17,14 @@ namespace CCSVolunteerMVC.Models
 		public DateTime ModifiedOn { get; set; }
 		public string HoursWorkedType { get; set; }
 		public decimal HoursWorkedQuantity { get; set; }
-		public User(int userId, int groupId, int positionKey, int userAccount )
+		public string GroupName { get; set; }
+		public User(int userId, int groupId, int positionKey, int userAccount, string groupName )
 		{
 			UserId = userId;
 			GroupId = groupId;
 			PositionKey = positionKey;
 			UserAccount = userAccount;
+			GroupName = groupName;
 			HoursWorkedDate = DateTime.Now.Date;
 			ClockIn = DateTime.UtcNow;
 			ClockOut = DateTime.UtcNow.AddHours(1);

@@ -1,5 +1,6 @@
-﻿@model CCSVolunteerMVC.Models.VolunteerGroup
-
+﻿@using CCSVolunteerMVC.Models
+@using CCSVolunteerMVC.ViewModels
+@model CCSVolunteerMVC.Models.VolunteerGroup
 @{
 	ViewBag.Title = "Details of group";
 	var counter = Request["NumberOfPeople"];
@@ -7,9 +8,36 @@
 	int numberOfPeople;
 	if (int.TryParse(counter, out numberOfPeople))
 	{
-		if(Model.volGrpPasswordHash == pin && numberOfPeople > 0)
+		if (Model.volGrpPasswordHash == pin && numberOfPeople > 0)
 		{
-			@Url.Action("","","")
+			if (App.TimeInTimeOut == "In")
+			{
+				for (int i = 0; i < numberOfPeople; i++)
+				{
+					User tempUser = new User(1, Model.volunteerGroupID, 1, 3, Model.volGrpName);
+					CurrentUsers.AddUser(tempUser);
+				}
+			}else
+			{
+				List<User> tempUsers = new List<User>(CurrentUsers.Users);
+				foreach (var item in tempUsers)
+				{
+					if (numberOfPeople > 0)
+					{
+						CurrentUsers.UpdateGroupTimeOut(item.GroupId, item.GroupName);
+						numberOfPeople--;
+					}
+					else if (numberOfPeople == 0)
+					{
+						break;
+					}
+				}
+			}
+			Response.Redirect("~/Kiosk/Index");
+		}
+		else if(Model.volGrpPasswordHash != pin && numberOfPeople <= 0)
+		{
+			//Add logic to show error
 		}
 	}
 }
@@ -77,6 +105,7 @@
 		</div>
 		<div class="col-md-10">
 			<input name="NumberOfPeople" class="form-control" type="number" value="" id="groupPin" placeholder="Number of People" />
+			@Html.EditorFor(m => m.volGrpPasswordHash, new { htmlAttributes = new { @type = "number"} })
 		</div>
 		<div class="col-md-10">
 			<input class="btn btn-primary btn-lg" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">

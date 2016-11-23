@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CCSVolunteerMVC.DAL;
 using System.Web;
 
 namespace CCSVolunteerMVC.Models
@@ -8,6 +9,7 @@ namespace CCSVolunteerMVC.Models
 	public static class CurrentUsers
 	{
 		private static List<User> _users = new List<User>();
+		
 
 		public static List<User> Users
 		{
@@ -23,11 +25,88 @@ namespace CCSVolunteerMVC.Models
 			}
 		}
 
-		public static void RemoveUser(int id)
+		public static void RemoveUser(int index)
 		{
-			if(_users.Any(i => i.UserId == id))
+			if(_users != null)
 			{
-				_users.RemoveAll(u => u.UserId == id);
+				_users.RemoveAt(index);
+			}
+		}
+		public static void UpdateGroupTimeOut(int id, string groupName)
+		{
+			foreach (var item in _users)
+			{
+				if (item.GroupId == id && item.GroupName == groupName)
+				{
+					int tempIndex;
+					item.ClockOut = DateTime.UtcNow;
+					TimeSpan tempSpan = item.ClockOut.Subtract(item.ClockIn);
+					item.HoursWorkedQuantity = (decimal)tempSpan.TotalMinutes;
+					InsertVolunteerInDatabase(item);
+					tempIndex = _users.IndexOf(item);
+					RemoveUser(tempIndex);
+					break;
+				}
+			}
+		}
+		public static void UpdateVolunteerTimeOut(int id, string volunteerName)
+		{
+			foreach (var item in _users)
+			{
+				if (item.UserId == id && item.GroupName == volunteerName)
+				{
+					int tempIndex;
+					item.ClockOut = DateTime.UtcNow;
+					TimeSpan tempSpan = item.ClockOut.Subtract(item.ClockIn);
+					item.HoursWorkedQuantity = (decimal)tempSpan.TotalMinutes;
+					InsertVolunteerInDatabase(item);
+					tempIndex = _users.IndexOf(item);
+					RemoveUser(tempIndex);
+				}
+			}
+		}
+		public static void ClockOutExcessUsers()
+		{
+			using (CCSContext context = new CCSContext())
+			{
+				foreach(var item in _users)
+				{ 
+					context.HoursWorkeds.Add(new HoursWorked()
+					{
+						hrsWrkdIDType = item.HoursWorkedType,
+						hrsWrkdTimeIn = item.ClockIn,
+						hrsWrkdQty = item.HoursWorkedQuantity,
+						hrsWrkdTimeOut = item.ClockOut,
+						hrsWrkedSchedDate = item.HoursWorkedDate,
+						userAcctID = item.UserAccount,
+						modifiedOn = item.ModifiedOn,
+						volunteerID = item.UserId,
+						volunteerGroupID = item.GroupId
+					});
+					context.SaveChanges();
+				}
+			}
+		}
+		public static void InsertVolunteerInDatabase(User user)
+		{
+			using (CCSContext context = new CCSContext())
+			{
+				HoursWorked hoursWorked = new HoursWorked()
+				{
+					hrsWrkdIDType = user.HoursWorkedType,
+					hrsWrkdTimeIn = user.ClockIn,
+					hrsWrkdQty = user.HoursWorkedQuantity,
+					hrsWrkdTimeOut = user.ClockOut,
+					hrsWrkedSchedDate = user.HoursWorkedDate,
+					userAcctID = user.UserAccount,
+					modifiedOn = user.ModifiedOn,
+					volunteerID = user.UserId,
+					volunteerGroupID = user.GroupId,
+					volunteer = context.Volunteers.Find(user.UserId),
+					positionLocation = context.PositionLocations.Find(user.PositionKey)
+				};
+				context.HoursWorkeds.Add(hoursWorked);
+				context.SaveChanges();
 			}
 		}
 	}

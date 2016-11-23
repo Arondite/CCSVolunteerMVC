@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace CCSVolunteerMVC.Models
 {
     public class VolunteerGroup
     {
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int volunteerGroupID { get; set; }
 		[Display(Name = "Group Name")]
         public string volGrpName { get; set; }
