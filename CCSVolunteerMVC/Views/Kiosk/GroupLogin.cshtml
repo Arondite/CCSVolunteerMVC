@@ -8,7 +8,7 @@
 	int numberOfPeople;
 	if (int.TryParse(counter, out numberOfPeople))
 	{
-		if (Model.volGrpPasswordHash == pin && numberOfPeople > 0)
+		if (numberOfPeople > 0)
 		{
 			if (App.TimeInTimeOut == "In")
 			{
@@ -17,11 +17,14 @@
 					User tempUser = new User(1, Model.volunteerGroupID, 1, 3, Model.volGrpName);
 					CurrentUsers.AddUser(tempUser);
 				}
+				Response.Redirect("~/MessageScreens/CompleteSignIn");
 			}else
 			{
 				List<User> tempUsers = new List<User>(CurrentUsers.Users);
+
 				foreach (var item in tempUsers)
 				{
+					int tempCheck = CurrentUsers.Users.Where(i => i.GroupName == item.GroupName).Count();
 					if (numberOfPeople > 0)
 					{
 						CurrentUsers.UpdateGroupTimeOut(item.GroupId, item.GroupName);
@@ -32,12 +35,12 @@
 						break;
 					}
 				}
+				Response.Redirect("~/MessageScreens/CompleteSignOut");
 			}
-			Response.Redirect("~/Kiosk/Index");
 		}
-		else if(Model.volGrpPasswordHash != pin && numberOfPeople <= 0)
+		else if(numberOfPeople <= 0)
 		{
-			//Add logic to show error
+			Response.Redirect("~/MessageScreens/NoRecords");
 		}
 	}
 }
@@ -45,7 +48,6 @@
 <h2>Volunteer Group</h2>
 
 <div>
-	<h4>Info</h4>
 	<hr />
 	<dl class="dl-horizontal">
 		<dt>
@@ -63,49 +65,12 @@
 		<dd>
 			@Html.DisplayFor(model => model.volGrpUserName)
 		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.volGrpAddress1)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.volGrpAddress1)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.volGrpAddress2)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.volGrpAddress2)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.volGrpState)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.volGrpState)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.volGrpZip)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.volGrpZip)
-		</dd>
-
 	</dl>
 </div>
 <form action="" method="post">
 	<div class="form-group row">
-		<div class="col-sm-10">
-			<input name="Pin" type="password" class="form-control" id="inputPassword" placeholder="Group's Pin">
-		</div>
 		<div class="col-md-10">
 			<input name="NumberOfPeople" class="form-control" type="number" value="" id="groupPin" placeholder="Number of People" />
-			@Html.EditorFor(m => m.volGrpPasswordHash, new { htmlAttributes = new { @type = "number"} })
 		</div>
 		<div class="col-md-10">
 			<input class="btn btn-primary btn-lg" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
@@ -113,7 +78,3 @@
 		</div>
 	</div>
 </form>
-<p>
-	@*@Html.ActionLink("Edit", "Edit", new { id = Model.volunteerGroupID }) |
-	@Html.ActionLink("Back to List", "Index")*@
-</p>

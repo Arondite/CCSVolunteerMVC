@@ -34,11 +34,6 @@ namespace CCSVolunteerMVC.Controllers
 			VolunteerClockModel volunteerClockModel = new VolunteerClockModel(db.Volunteers.ToList(), action);
 			return View(volunteerClockModel);
 		}
-
-		//public ActionResult GroupClock()
-		//{
-		//	return View();
-		//}
 		public ActionResult GroupClock(char? alphabetChar)
 		{
 			List<VolunteerGroup> groupList = new List<VolunteerGroup>();
@@ -82,6 +77,10 @@ namespace CCSVolunteerMVC.Controllers
 			volunteer = db.Volunteers.Where(v => v.volunteerID == id).ToList();
 			VolunteerViewModel volunteerViewModel = new VolunteerViewModel(volunteer, db.Ethnicities.ToList());
 			return View(volunteerViewModel);
+		}
+		public ActionResult KioskExit()
+		{
+			return View();
 		}
 	}
 }

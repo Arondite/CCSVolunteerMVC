@@ -209,6 +209,7 @@
     <Compile Include="Controllers\HoursWorkedController.cs" />
     <Compile Include="Controllers\KioskController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageScreensController.cs" />
     <Compile Include="Controllers\PositionLocationController.cs" />
     <Compile Include="Controllers\UserLogInController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
@@ -247,6 +248,10 @@
     <Compile Include="Migrations\201611222340201_UpdateGroup.Designer.cs">
       <DependentUpon>201611222340201_UpdateGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611240018447_FixingSearchEntry.cs" />
+    <Compile Include="Migrations\201611240018447_FixingSearchEntry.Designer.cs">
+      <DependentUpon>201611240018447_FixingSearchEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BooleanTitleMatch.cs" />
@@ -262,6 +267,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PositionLocation.cs" />
+    <Compile Include="Models\TimeRoundUp.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Models\VolunteerGroup.cs" />
@@ -269,6 +275,7 @@
     <Compile Include="Models\VolunteerTraining.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CombinedSearchViewModel.cs" />
     <Compile Include="ViewModels\VolunteerClockModel.cs" />
     <Compile Include="ViewModels\VolunteerSearch.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />
@@ -415,6 +422,12 @@
     <Content Include="Views\Kiosk\GroupLogin.cshtml" />
     <Content Include="Views\Kiosk\VolunteerPasswordList.cshtml" />
     <Content Include="Views\Kiosk\VolunteerDetails.cshtml" />
+    <Content Include="Views\MessageScreens\CourtOrderedScreen.cshtml" />
+    <Content Include="Views\MessageScreens\CompleteSignIn.cshtml" />
+    <Content Include="Views\MessageScreens\CompleteSignOut.cshtml" />
+    <Content Include="Views\MessageScreens\NoRecords.cshtml" />
+    <Content Include="Views\Kiosk\KioskExit.cshtml" />
+    <Content Include="Views\MessageScreens\EndTerminal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -448,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611222340201_UpdateGroup.resx">
       <DependentUpon>201611222340201_UpdateGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611240018447_FixingSearchEntry.resx">
+      <DependentUpon>201611240018447_FixingSearchEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

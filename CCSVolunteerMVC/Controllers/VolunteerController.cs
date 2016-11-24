@@ -25,11 +25,15 @@ namespace CCSVolunteerMVC.Controllers
 		public ActionResult VolunteerSearch(string searchString)
 		{
 			var viewModel = new VolunteerSearch();
+			var combinedSearchModel = new CombinedSearchViewModel();
+			var volunteerViewModel = new VolunteerViewModel(db.Volunteers.ToList(), db.Ethnicities.ToList());
 			if (!string.IsNullOrEmpty(searchString))
 			{
 				viewModel = new VolunteerSearch(searchString, db.Volunteers.ToList());
+				var combinedSearchViewModel = new CombinedSearchViewModel(volunteerViewModel, viewModel);
+				return View(combinedSearchViewModel);
 			}
-			return View(viewModel);
+			return View( new CombinedSearchViewModel());
 		}
 
 		public ActionResult Index()

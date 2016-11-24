@@ -1,9 +1,9 @@
 ﻿@{
 	ViewBag.Title = "AdminIntro";
-	//if(ViewBag.Admin != 1)
-	//{
-	//	Response.Redirect("~/UserLogIn/Index");
-	//}
+	if (App.Admin != 1)
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
 }
 
 <h2>Welcome</h2>
@@ -15,5 +15,6 @@ You have access to the following pages.
 	<a href="@Url.Action("Index", "Volunteer")" class="list-group-item">Update User Information</a>
 	<a href="@Url.Action("Create", "Volunteer")" class="list-group-item">Create New Volunteer</a>
 	<a href="@Url.Action("Create", "VolunteerGroup")" class="list-group-item">Create New Volunteer Group</a>
-	<a class="list-group-item">Volunteer Search</a>
+	<a href="@Url.Action("VolunteerSearch", "Volunteer")" class="list-group-item">Volunteer Search</a>
+	<a href="@Url.Action("Index", "Kiosk")" class="list-group-item">Kiosk Intro Page</a>
 </div>

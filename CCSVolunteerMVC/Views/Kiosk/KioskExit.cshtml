@@ -1,13 +1,14 @@
-﻿@{
-	ViewBag.Title = "UserLogIn";
+﻿@using CCSVolunteerMVC.Models
+@{
+	ViewBag.Title = "KioskExit";
 	if (IsPost)
 	{
 		var username = Request["username"];
 		var password = Request["password"];
 		if (username == "CCSAdmin" && password == "CCSAdmin")
 		{
-			App.Admin = 1;
-			Response.Redirect("~/UserLogIn/AdminIntro");
+			CurrentUsers.ClockOutExcessUsers();
+			Response.Redirect("~/MessageScreens/EndTerminal");
 		}
 	}
 }

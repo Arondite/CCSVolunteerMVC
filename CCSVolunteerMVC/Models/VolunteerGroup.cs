@@ -9,7 +9,6 @@ namespace CCSVolunteerMVC.Models
 {
     public class VolunteerGroup
     {
-		
         public int volunteerGroupID { get; set; }
 		[Display(Name = "Group Name")]
         public string volGrpName { get; set; }

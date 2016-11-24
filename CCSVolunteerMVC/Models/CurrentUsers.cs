@@ -9,7 +9,7 @@ namespace CCSVolunteerMVC.Models
 	public static class CurrentUsers
 	{
 		private static List<User> _users = new List<User>();
-		
+		private static TimeRoundUp _timeRoundUp = new TimeRoundUp();
 
 		public static List<User> Users
 		{
@@ -39,7 +39,7 @@ namespace CCSVolunteerMVC.Models
 				if (item.GroupId == id && item.GroupName == groupName)
 				{
 					int tempIndex;
-					item.ClockOut = DateTime.UtcNow;
+					item.ClockOut = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15));
 					TimeSpan tempSpan = item.ClockOut.Subtract(item.ClockIn);
 					item.HoursWorkedQuantity = (decimal)tempSpan.TotalMinutes;
 					InsertVolunteerInDatabase(item);
@@ -54,14 +54,15 @@ namespace CCSVolunteerMVC.Models
 			foreach (var item in _users)
 			{
 				if (item.UserId == id && item.GroupName == volunteerName)
-				{
+				{	
 					int tempIndex;
-					item.ClockOut = DateTime.UtcNow;
+					item.ClockOut = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15));
 					TimeSpan tempSpan = item.ClockOut.Subtract(item.ClockIn);
 					item.HoursWorkedQuantity = (decimal)tempSpan.TotalMinutes;
 					InsertVolunteerInDatabase(item);
 					tempIndex = _users.IndexOf(item);
 					RemoveUser(tempIndex);
+					break;
 				}
 			}
 		}
@@ -81,11 +82,14 @@ namespace CCSVolunteerMVC.Models
 						userAcctID = item.UserAccount,
 						modifiedOn = item.ModifiedOn,
 						volunteerID = item.UserId,
-						volunteerGroupID = item.GroupId
+						volunteerGroupID = item.GroupId,
+						volunteer = context.Volunteers.Find(item.UserId),
+						positionLocation = context.PositionLocations.Find(item.PositionKey)
 					});
 					context.SaveChanges();
 				}
 			}
+			_users.RemoveRange(0, _users.Count());
 		}
 		public static void InsertVolunteerInDatabase(User user)
 		{

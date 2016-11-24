@@ -1,12 +1,14 @@
-﻿@model  CCSVolunteerMVC.ViewModels.VolunteerSearch
-@using CCSVolunteerMVC.Models;
+﻿@using CCSVolunteerMVC.Models;
+@using CCSVolunteerMVC.ViewModels;
+@model  CCSVolunteerMVC.ViewModels.CombinedSearchViewModel
+
 
 @{
 	ViewBag.Title = "VolunteerSearch";
 }
 
 <h2>VolunteerSearch</h2>
-	@Html.ActionLink("Create New", "Create")
+	@*@Html.ActionLink("Create New", "Create")*@
 
 	@using (Html.BeginForm("VolunteerSearch", "Volunteer", FormMethod.Get))
 	{
@@ -50,54 +52,55 @@
 				Volunteer is Active
 			</th>
 		</tr>
-		@if (Model.Volunteers != null)
+		@if (Model.volunteer != null)
 		{
-			for (int i = 0; i < Model.Volunteers.Count(); i++)
+			for (int i = 0; i < Model.volunteer.Count(); i++)
 			{
 				<tr>
 					<td>
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volFirstName)
+						@*@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volFirstName)*@
+						@Html.DisplayFor(modelItem => modelItem.volunteer.ElementAt(i).volFirstName)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volLastName)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volLastName)
+						@Html.DisplayFor(modelItem => modelItem.volunteer.ElementAt(i).volLastName)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volDOB)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volDOB)
+						@Html.DisplayFor(modelItem => modelItem.volunteer.ElementAt(i).volDOB)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volPin)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volPin)
+						@Html.DisplayFor(modelItem => modelItem.volunteer.ElementAt(i).volPin)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volGender)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volGender)
+						@Html.DisplayFor(modelItem => modelItem.volunteer.ElementAt(i).volGender)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volJoinDate)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volPin)
+						@Html.DisplayFor(modelItem => modelItem.volunteer.ElementAt(i).volPin)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volsCourtOrdered)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volsCourtOrdered)
+						@Html.DisplayFor(modelItem => modelItem.courtOrdered.ElementAt(i).Value)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.ethnicityID)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).ethnicityID)
+						@Html.DisplayFor(modelItem => modelItem.ethnicity.ElementAt(i).ethName)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volsClient)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volsClient)
+						@Html.DisplayFor(modelItem => modelItem.IsClient.ElementAt(i).Value)
 					</td>
 					<td>
 						@*@Html.DisplayFor(modelItem => item.volsActive)*@
-						@Html.DisplayFor(modelItem => modelItem.Volunteers.ElementAt(i).volsActive)
+						@Html.DisplayFor(modelItem => modelItem.IsActive.ElementAt(i).Value)
 					</td>
 					<td>
-						@Html.ActionLink("Edit", "Edit", new { id = Model.Volunteers.ElementAt(i).volunteerID }) |
-						@Html.ActionLink("Details", "Details", new { id = Model.Volunteers.ElementAt(i).volunteerID }) |
-						@Html.ActionLink("Delete", "Delete", new { id = Model.Volunteers.ElementAt(i).volunteerID })
+						@Html.ActionLink("Edit", "Edit", new { id = Model.volunteer.ElementAt(i).volunteerID }) |
+						@Html.ActionLink("Details", "Details", new { id = Model.volunteer.ElementAt(i).volunteerID }) |
+						@Html.ActionLink("Delete", "Delete", new { id = Model.volunteer.ElementAt(i).volunteerID })
 					</td>
 				</tr>
 			}

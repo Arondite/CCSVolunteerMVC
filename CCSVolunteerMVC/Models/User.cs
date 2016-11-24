@@ -7,6 +7,7 @@ namespace CCSVolunteerMVC.Models
 {
 	public class User
 	{
+		TimeRoundUp _timeRoundUp = new TimeRoundUp();
 		public int UserId { get; set; }
 		public int GroupId { get; set; }
 		public int PositionKey { get; set; }
@@ -26,9 +27,9 @@ namespace CCSVolunteerMVC.Models
 			UserAccount = userAccount;
 			GroupName = groupName;
 			HoursWorkedDate = DateTime.Now.Date;
-			ClockIn = DateTime.UtcNow;
-			ClockOut = DateTime.UtcNow.AddHours(1);
-			ModifiedOn = DateTime.Now.Date;
+			ClockIn = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15));
+			ClockOut = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15)).AddHours(1);
+			ModifiedOn = DateTime.UtcNow;
 			HoursWorkedType = "A";
 			HoursWorkedQuantity = 1;
 		}

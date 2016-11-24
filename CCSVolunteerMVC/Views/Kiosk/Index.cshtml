@@ -1,6 +1,15 @@
 ﻿
 @{
-    ViewBag.Title = "In or Out";
+	ViewBag.Title = "In or Out";
+	App.Admin = 3;
+	if(IsPost)
+	{
+		var endTerminal = Request["EndTerminal"];
+		if (endTerminal == "EndTerminal")
+		{
+			Response.Redirect("~/Kiosk/KioskExit");			
+		}
+	}
 }
 
 <h2>In or Out</h2>
@@ -8,5 +17,13 @@
 	<div class="col-sm-offset-2 col-sm-10">
 		<input class="btn btn-primary btn-lg btn-block" name="In" type="submit" id="In" formmethod="POST" title="In" value="In">
 		<input class="btn btn-secondary btn-lg btn-block" name="Out" type="submit" id="Out" formmethod="POST" title="Out" value="Out">
+	</div>
+</form>
+<br />
+<br />
+<br />
+<form action="" method="post" class="form-horizontal" id="logout">
+	<div class="col-sm-offset-2 col-sm-10">
+		<input class="btn btn-danger btn-lg btn-block" name="EndTerminal" type="submit" id="EndTerminal" formmethod="POST" title="Out" value="EndTerminal">	
 	</div>
 </form>

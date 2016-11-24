@@ -1,119 +1,62 @@
-﻿@model CCSVolunteerMVC.ViewModels.VolunteerViewModel
+﻿@using CCSVolunteerMVC.Models;
+@model CCSVolunteerMVC.ViewModels.VolunteerViewModel
 
 @{
 	ViewBag.Title = "Details";
+	if (IsPost)
+	{
+		if (App.TimeInTimeOut == "In")
+		{
+			User tempUser = new User(Model.Volunteer.ElementAt(0).volunteerID, 1, 1, 3, "");
+			CurrentUsers.AddUser(tempUser);
+			if (Model.Volunteer.ElementAt(0).volsCourtOrdered == 1)
+			{
+				Response.Redirect("~/MessageScreens/CourtOrderedScreen");
+			}
+			else {
+				Response.Redirect("~/MessageScreens/CompleteSignIn");
+			}
+		}
+		else {
+			int tempCheck = CurrentUsers.Users.Where(u => u.UserId == Model.Volunteer.ElementAt(0).volunteerID).Count();
+			if (tempCheck > 0)
+			{
+				CurrentUsers.UpdateVolunteerTimeOut(Model.Volunteer.ElementAt(0).volunteerID, "");
+				Response.Redirect("~/MessageScreens/CompleteSignOut");
+			}
+			else {
+				Response.Redirect("~/MessageScreens/NoRecords");
+			}
+		}
+	}
 }
 
-<h2>Details</h2>
+<h2>Volunteer</h2>
 
 <div>
-	<h4>Volunteer</h4>
 	<hr />
 	<dl class="dl-horizontal">
 		<dt>
-			@*@Html.DisplayNameFor(model => model.volFirstName)*@
 			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volFirstName)
 		</dt>
 
 		<dd>
-			@*@Html.DisplayFor(model => model.volFirstName)*@
 			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volFirstName)
 		</dd>
 
 		<dt>
-			@*@Html.DisplayNameFor(model => model.volLastName)*@
 			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volLastName)
 		</dt>
 
 		<dd>
-			@*@Html.DisplayFor(model => model.volLastName)*@
 			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volLastName)
 		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.volDOB)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volDOB)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.volDOB)*@
-			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volDOB)
-		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.volPin)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volPin)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.volPin)*@
-			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volPin)
-		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.volGender)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volGender)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.volGender)*@
-			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volGender)
-		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.volJoinDate)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volJoinDate)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.volJoinDate)*@
-			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volJoinDate)
-		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.volsCourtOrdered)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsCourtOrdered)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.volsCourtOrdered)*@
-			@Html.DisplayFor(model => model.CourtOrdered.ElementAt(0).Value)
-		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.ethnicityID)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).ethnicityID)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.ethnicityID)*@
-			@Html.DisplayFor(model => model.Ethnicity.ElementAt(0).ethName)
-		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.volsClient)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsClient)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.volsClient)*@
-			@Html.DisplayFor(model => model.IsClient.ElementAt(0).Value)
-		</dd>
-
-		<dt>
-			@*@Html.DisplayNameFor(model => model.volsActive)*@
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volsActive)
-		</dt>
-
-		<dd>
-			@*@Html.DisplayFor(model => model.volsActive)*@
-			@Html.DisplayFor(model => model.IsActive.ElementAt(0).Value)
-		</dd>
-
 	</dl>
 </div>
-<p>
-	@*@Html.ActionLink("Edit", "Volunteer", new { id = Model.Volunteer.ElementAt(0).volunteerID }) @*|@*
-	@Html.ActionLink("Back to List", "Index")*@
-	@*<a href="@Url.Action("Edit", "Volunteer", new { id = Model.Volunteer.ElementAt(0).volunteerID })">Edit</a>*@
-</p>
+<div>
+	<form action="" method="post">
+		<div class="col-md-10">
+			<input class="btn btn-primary btn-lg" name="SignIn" type="submit" id="SignIn" formmethod="POST" title="Submit" value="Submit">
+		</div>
+	</form>
+</div>

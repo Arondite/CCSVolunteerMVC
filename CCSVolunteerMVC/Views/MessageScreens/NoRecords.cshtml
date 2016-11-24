@@ -1,0 +1,19 @@
+﻿
+@{
+	ViewBag.Title = "NoRecords";
+	var okay = Request["Okay"];
+	if (IsPost)
+	{
+		Response.Redirect("~/Kiosk/Index");
+	}
+}
+
+<h2>No Records of user signed in</h2>
+
+<div>
+	<form action="" method="post">
+		<div class="col-md-10">
+			<input class="btn btn-primary btn-lg" name="Okay" type="submit" id="Okay" formmethod="POST" title="Submit" value="Okay">
+		</div>
+	</form>
+</div>
