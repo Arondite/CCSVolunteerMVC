@@ -1,0 +1,29 @@
+﻿
+@{
+	ViewBag.Title = "Location";
+	
+	///This logic logges the location of the kiosk for further use in the appplication
+	///This screen is only presented once 
+	if (IsPost)
+	{
+		var ogden = Request["Ogden"];
+		var saltLakeCity = Request["Salt Lake City"];
+		if (!string.IsNullOrWhiteSpace(ogden))
+		{
+			App.Location = ogden;
+		}
+		else
+		{
+			App.Location = saltLakeCity;
+		}
+		Response.Redirect("~/Kiosk/Index");
+	}
+}
+
+<h2>Location</h2>
+<form action="" method="post" class="form-horizontal" id="login">
+	<div class="col-sm-offset-2 col-sm-10">
+		<input class="btn btn-primary btn-lg btn-block" name="Salt Lake City" type="submit" id="Salt Lake City" formmethod="POST" title="In" value="Salt Lake City">
+		<input class="btn btn-secondary btn-lg btn-block" name="Ogden" type="submit" id="Ogden" formmethod="POST" title="Out" value="Ogden">
+	</div>
+</form>

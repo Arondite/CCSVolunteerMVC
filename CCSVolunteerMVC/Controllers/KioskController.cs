@@ -13,6 +13,11 @@ namespace CCSVolunteerMVC.Controllers
     public class KioskController : Controller
     {
 		private CCSContext db = new CCSContext();
+
+		public ActionResult LocationSelection()
+		{
+			return View();
+		}
 		// GET: Kiosk
 		public ActionResult Index()
         {
@@ -60,11 +65,12 @@ namespace CCSVolunteerMVC.Controllers
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 			VolunteerGroup volunteerGroup = db.VolunteerGroups.Find(id);
+			VolunteerPositionViewModel volunteerPositionViewModel = new VolunteerPositionViewModel(volunteerGroup, db.Positions.ToList());
 			if (volunteerGroup == null)
 			{
 				return HttpNotFound();
 			}
-			return View(volunteerGroup);
+			return View(volunteerPositionViewModel);
 		}
 		public ActionResult VolunteerPasswordList(int? password)
 		{

@@ -210,6 +210,7 @@
     <Compile Include="Controllers\KioskController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessageScreensController.cs" />
+    <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\PositionLocationController.cs" />
     <Compile Include="Controllers\UserLogInController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
@@ -252,6 +253,10 @@
     <Compile Include="Migrations\201611240018447_FixingSearchEntry.Designer.cs">
       <DependentUpon>201611240018447_FixingSearchEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611262050129_AddedTable.cs" />
+    <Compile Include="Migrations\201611262050129_AddedTable.Designer.cs">
+      <DependentUpon>201611262050129_AddedTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BooleanTitleMatch.cs" />
@@ -266,6 +271,7 @@
     <Compile Include="Models\HoursWorked.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Position.cs" />
     <Compile Include="Models\PositionLocation.cs" />
     <Compile Include="Models\TimeRoundUp.cs" />
     <Compile Include="Models\User.cs" />
@@ -277,6 +283,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CombinedSearchViewModel.cs" />
     <Compile Include="ViewModels\VolunteerClockModel.cs" />
+    <Compile Include="ViewModels\VolunteerPositionViewModel.cs" />
     <Compile Include="ViewModels\VolunteerSearch.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />
   </ItemGroup>
@@ -428,6 +435,12 @@
     <Content Include="Views\MessageScreens\NoRecords.cshtml" />
     <Content Include="Views\Kiosk\KioskExit.cshtml" />
     <Content Include="Views\MessageScreens\EndTerminal.cshtml" />
+    <Content Include="Views\Kiosk\LocationSelection.cshtml" />
+    <Content Include="Views\Position\Create.cshtml" />
+    <Content Include="Views\Position\Delete.cshtml" />
+    <Content Include="Views\Position\Details.cshtml" />
+    <Content Include="Views\Position\Edit.cshtml" />
+    <Content Include="Views\Position\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -464,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611240018447_FixingSearchEntry.resx">
       <DependentUpon>201611240018447_FixingSearchEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611262050129_AddedTable.resx">
+      <DependentUpon>201611262050129_AddedTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

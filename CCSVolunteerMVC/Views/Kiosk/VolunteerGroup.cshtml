@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<string>
 @{
 	ViewBag.Title = "Kiosk Volunteer or Group";
+	///This screen is for the choice if the volunteer is a group or individual
+	///This screen also sets the global variable for the clock in/out
 	var volunteer = Request["Volunteer"];
 	var Group = Request["Group"];
 	var clockIn = Request["In"];
@@ -23,24 +25,6 @@
 	{
 		action = Model.ElementAt(0);
 	}
-	@*if (IsPost)
-	{
-		if (!string.IsNullOrWhiteSpace(volunteer))
-		{
-			//Response.Redirect("~/CCSVolunteerMVC/Views/Kiosk/VolunteerClock.cshtml");
-			if (Model.ElementAt(0) == "In")
-			{
-				@Url.Action("VolunteerClock", "Kiosk", new { action = "In" })
-			}
-			else {
-				@Url.Action("VolunteerClock", "Kiosk", new { action = "Out"})
-			}
-		}
-		else if (!string.IsNullOrWhiteSpace(Group))
-		{
-			@Url.Action("GroupClock", "Kiosk", new { alphabetChar = "A" });
-		}
-	}*@
 }
 
 <h2>Kiosk Volunteer or Group</h2>

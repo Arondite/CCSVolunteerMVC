@@ -25,9 +25,49 @@
 			<label class="col-md-2" for="Password">Volunteer's Pin:</label>
 			<input class="form-control col-md-10" type="password" name="Password" id="Password">
 		</div>
+		<br />
+		<div class="row">
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="0" />
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="1" />
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="2" />
+				</div>
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="3" />
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="4" />
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="5" />
+				</div>
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="6" />
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="7" />
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="8" />
+					<input onmouseup="document.getElementById('Password').value += this.value"
+						   type="button" class="btn btn-primary btn-xl" value="9" />
+				</div>
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<input onmouseup="var temp = document.getElementById('Password').value;
+                              var temp2 = temp.substr(0, (temp.length - 1));
+                              document.getElementById('Password').value = temp2;"
+						   type="button" class="btn btn-primary btn-xl" value="Backspace" />
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<span class="col-md-2"></span>
-			<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Password">
+			<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Clock In/Out">
 		</div>
 	</div>
 </form>

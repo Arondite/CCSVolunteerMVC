@@ -1,9 +1,24 @@
 ﻿@using CCSVolunteerMVC.Models
 @using CCSVolunteerMVC.ViewModels
-@model CCSVolunteerMVC.Models.VolunteerGroup
+@model CCSVolunteerMVC.ViewModels.VolunteerPositionViewModel
 @{
 	ViewBag.Title = "Details of group";
+	///This screen displays the group that they are
+	///This all them to clock how many people they wish to clock in
 	var counter = Request["NumberOfPeople"];
+	var groupVolunteer = Model.Volunteer;
+	var positions = Model.Position;
+	var positionSelection = Request["Position"];
+	int positionId;
+
+	List<SelectListItem> selectListItem = new List<SelectListItem>();
+	foreach (var item in positions)
+	{
+		selectListItem.Add(new SelectListItem()
+		{
+			Text = item.PositionTitle, Value = item.PositionID.ToString()
+		});
+	}
 	var pin = Request["Pin"];
 	int numberOfPeople;
 	if (int.TryParse(counter, out numberOfPeople))
@@ -14,8 +29,11 @@
 			{
 				for (int i = 0; i < numberOfPeople; i++)
 				{
-					User tempUser = new User(1, Model.volunteerGroupID, 1, 3, Model.volGrpName);
-					CurrentUsers.AddUser(tempUser);
+					if (int.TryParse(positionSelection, out positionId))
+					{
+						User tempUser = new User(1, groupVolunteer.volunteerGroupID, positionId, 3, groupVolunteer.volGrpName);
+						CurrentUsers.AddUser(tempUser);
+					}
 				}
 				Response.Redirect("~/MessageScreens/CompleteSignIn");
 			}else
@@ -51,29 +69,49 @@
 	<hr />
 	<dl class="dl-horizontal">
 		<dt>
-			@Html.DisplayNameFor(model => model.volGrpName)
+			@Html.DisplayNameFor(model => model.Volunteer.volGrpName)
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.volGrpName)
+			@Html.DisplayFor(model => model.Volunteer.volGrpName)
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.volGrpUserName)
+			@Html.DisplayNameFor(model => model.Volunteer.volGrpUserName)
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.volGrpUserName)
+			@Html.DisplayFor(model => model.Volunteer.volGrpUserName)
 		</dd>
 	</dl>
 </div>
 <form action="" method="post">
 	<div class="form-group row">
-		<div class="col-md-10">
-			<input name="NumberOfPeople" class="form-control" type="number" value="" id="groupPin" placeholder="Number of People" />
+		<div class="col-sm-10">
+			<input name="NumberOfPeople" class="form-control col-sm-10" type="number" value="" id="groupPin" placeholder="Number of People" />
 		</div>
-		<div class="col-md-10">
-			<input class="btn btn-primary btn-lg" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
+		<div class="col-sm-10">
+			<input onmouseup="document.getElementById('groupPin').value -= -1;"
+				   type="button" class="btn btn-lg btn-primary btn-xl col-sm-5" value="+" font-size="500%" />
+			<input onmouseup="document.getElementById('groupPin').value > 1 ? document.getElementById('groupPin').value -= 1 : null;"
+				   type="button" class="btn btn-lg btn-primary btn-xl col-sm-5" value="-" />
+		</div>
+		<div class="col-sm-10">
+			<div class="form-group">
+				@Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-sm-10" })
+				<div class="col-md-10">
+					<div class="row">
+						@Html.DropDownListFor(model => model.Position, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
+						@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+					</div>
+					<div class="row">
+						<input class="btn btn-primary btn-lg" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-10">
 			<a href="@Url.Action("GroupClock", "Kiosk", new { alphabetChar = "A"})">&nbspBack to Group Listing</a>
 		</div>
 	</div>

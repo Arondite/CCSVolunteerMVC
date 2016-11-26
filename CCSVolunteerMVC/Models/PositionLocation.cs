@@ -20,6 +20,7 @@ namespace CCSVolunteerMVC.Models
         public string posLocationNotes { get; set; }
 
         public virtual ICollection<HoursWorked> hoursWorked { get; set; }
+		public virtual ICollection<Position> position { get; set; }
 
-    }
+	}
 }

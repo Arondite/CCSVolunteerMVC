@@ -1,5 +1,6 @@
-﻿
+﻿@using CCSVolunteerMVC.Models
 @{
+	TimeRoundUp timeRoundUp = new TimeRoundUp();
 	ViewBag.Title = "CompleteSignOut";
 	var okay = Request["Okay"];
 	if (IsPost)
@@ -11,7 +12,7 @@
 <h2>Completed Sign Out</h2>
 
 <div>
-	You clocked out at @DateTime.Now.TimeOfDay
+	You clocked out at @timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15))
 </div>
 <div>
 	<form action="" method="post">

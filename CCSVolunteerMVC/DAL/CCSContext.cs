@@ -23,6 +23,7 @@ namespace CCSVolunteerMVC.DAL
         public DbSet<HoursWorked> HoursWorkeds { get; set; }
         public DbSet<CompletedTraining> CompletedTrainings {get; set; }
         public DbSet<VolunteerTraining> VolunteerTrainings { get; set; }
+		public DbSet<Position> Positions { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
