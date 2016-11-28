@@ -1,6 +1,8 @@
 ﻿@using CCSVolunteerMVC.Models
 @{
 	ViewBag.Title = "KioskExit";
+	///This screen is a login screen asking for the Admin's username and password.
+	///This will have the users that are still in the static class clock out with a given one hour of service
 	if (IsPost)
 	{
 		var username = Request["username"];

@@ -6,6 +6,10 @@ using System.Web;
 
 namespace CCSVolunteerMVC.ViewModels
 {
+	/// <summary>
+	/// This is a view model that takes in a view model that displays the volunteer information in human
+	/// readable form and a view model with the result of a search string
+	/// </summary>
 	public class CombinedSearchViewModel
 	{
 		public List<Volunteer> volunteer;

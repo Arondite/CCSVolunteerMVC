@@ -283,6 +283,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CombinedSearchViewModel.cs" />
     <Compile Include="ViewModels\VolunteerClockModel.cs" />
+    <Compile Include="ViewModels\VolunteerGroupPositionViewModel.cs" />
     <Compile Include="ViewModels\VolunteerPositionViewModel.cs" />
     <Compile Include="ViewModels\VolunteerSearch.cs" />
     <Compile Include="ViewModels\VolunteerViewModel.cs" />

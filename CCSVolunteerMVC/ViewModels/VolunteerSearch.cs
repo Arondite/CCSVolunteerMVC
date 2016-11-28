@@ -6,6 +6,10 @@ using CCSVolunteerMVC.Models;
 
 namespace CCSVolunteerMVC.ViewModels
 {
+	/// <summary>
+	/// This is a view model that shows a list of volunteers that result from a string that 
+	/// searches for matching criteria
+	/// </summary>
 	public class VolunteerSearch
 	{
 		public IEnumerable<Volunteer> Volunteers { get; set; }

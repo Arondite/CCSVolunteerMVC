@@ -6,30 +6,33 @@ using CCSVolunteerMVC.Models;
 
 namespace CCSVolunteerMVC.ViewModels
 {
+	/// <summary>
+	/// This is a view model that shows the viewable data of a volunteer and the positions
+	/// that the volunteer can choose from
+	/// </summary>
 	public class VolunteerPositionViewModel
 	{
-		private VolunteerGroup _Volunteer;
-		private IEnumerable<Position> _Position;
+		private VolunteerViewModel _Volunteer;
+		private IEnumerable<Position> _Positions;
 
-		public IEnumerable<Position> Position
+		public IEnumerable<Position> Positions
 		{
-			get { return _Position; }
-			set { _Position = value; }
+			get { return _Positions; }
+			set { _Positions = value; }
 		}
 
-		public VolunteerGroup Volunteer
+		public VolunteerViewModel Volunteer
 		{
 			get { return _Volunteer; }
 			set { _Volunteer = value; }
 		}
 
-
 		public VolunteerPositionViewModel() : this(null, null)
 		{ }
-		public VolunteerPositionViewModel(VolunteerGroup volunteer, IEnumerable<Position> position)
+		public VolunteerPositionViewModel(VolunteerViewModel volunteer, IEnumerable<Position> position)
 		{
 			Volunteer = volunteer;
-			Position = position;
+			Positions = position;
 		}
 	}
 }

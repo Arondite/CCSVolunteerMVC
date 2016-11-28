@@ -1,15 +1,28 @@
 ﻿@using CCSVolunteerMVC.Models;
-@model CCSVolunteerMVC.ViewModels.VolunteerViewModel
+@model CCSVolunteerMVC.ViewModels.VolunteerPositionViewModel
 
 @{
 	ViewBag.Title = "Details";
+	///This is the View that displays the volunteers information that will allow them to clock in/out and submit which
+	///position they held for the volunteer work
+	List<SelectListItem> selectListItem = new List<SelectListItem>();
+	foreach (var item in Model.Positions)
+	{
+		selectListItem.Add(new SelectListItem()
+		{
+			Text = item.PositionTitle,
+			Value = item.PositionID.ToString()
+		});
+	}
+	var position = Request["Positions"];
 	if (IsPost)
 	{
-		if (App.TimeInTimeOut == "In")
+		int positionId = 0;
+		if (App.TimeInTimeOut == "In" && int.TryParse(position, out positionId))
 		{
-			User tempUser = new User(Model.Volunteer.ElementAt(0).volunteerID, 1, 1, 3, "");
+			User tempUser = new User(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, 1, positionId, 3, "");
 			CurrentUsers.AddUser(tempUser);
-			if (Model.Volunteer.ElementAt(0).volsCourtOrdered == 1)
+			if (Model.Volunteer.Volunteer.ElementAt(0).volsCourtOrdered == 1)
 			{
 				Response.Redirect("~/MessageScreens/CourtOrderedScreen");
 			}
@@ -18,10 +31,10 @@
 			}
 		}
 		else {
-			int tempCheck = CurrentUsers.Users.Where(u => u.UserId == Model.Volunteer.ElementAt(0).volunteerID).Count();
+			int tempCheck = CurrentUsers.Users.Where(u => u.UserId == Model.Volunteer.Volunteer.ElementAt(0).volunteerID).Count();
 			if (tempCheck > 0)
 			{
-				CurrentUsers.UpdateVolunteerTimeOut(Model.Volunteer.ElementAt(0).volunteerID, "");
+				CurrentUsers.UpdateVolunteerTimeOut(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, "");
 				Response.Redirect("~/MessageScreens/CompleteSignOut");
 			}
 			else {
@@ -37,26 +50,37 @@
 	<hr />
 	<dl class="dl-horizontal">
 		<dt>
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volFirstName)
+			@Html.DisplayNameFor(model => model.Volunteer.Volunteer.ElementAt(0).volFirstName)
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volFirstName)
+			@Html.DisplayFor(model => model.Volunteer.Volunteer.ElementAt(0).volFirstName)
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.Volunteer.ElementAt(0).volLastName)
+			@Html.DisplayNameFor(model => model.Volunteer.Volunteer.ElementAt(0).volLastName)
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.Volunteer.ElementAt(0).volLastName)
+			@Html.DisplayFor(model => model.Volunteer.Volunteer.ElementAt(0).volLastName)
 		</dd>
 	</dl>
 </div>
 <div>
 	<form action="" method="post">
 		<div class="col-md-10">
-			<input class="btn btn-primary btn-lg" name="SignIn" type="submit" id="SignIn" formmethod="POST" title="Submit" value="Submit">
+			<div class="form-group">
+				@Html.LabelFor(model => model.Positions, htmlAttributes: new { @class = "control-label col-sm-10" })
+				<div class="col-md-10">
+					<div class="row">
+						@Html.DropDownListFor(model => model.Positions, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
+						@Html.ValidationMessageFor(model => model.Positions, "", new { @class = "text-danger" })
+					</div>
+					<div class="row">
+						<input class="btn btn-primary btn-lg" name="SignIn" type="submit" id="SignIn" formmethod="POST" title="Submit" value="Submit">
+					</div>
+				</div>
+			</div>
 		</div>
 	</form>
 </div>

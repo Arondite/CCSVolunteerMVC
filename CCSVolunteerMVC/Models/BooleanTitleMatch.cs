@@ -5,6 +5,11 @@ using System.Web;
 
 namespace CCSVolunteerMVC.Models
 {
+	/// <summary>
+	/// This is a basic class that will turn database data into viewable data
+	/// 1 => true
+	/// 0 => false
+	/// </summary>
 	public class BooleanTitleMatch
 	{
 		private int _DatabaseBitValue;

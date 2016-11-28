@@ -1,10 +1,11 @@
 ﻿@using CCSVolunteerMVC.Models
 @using CCSVolunteerMVC.ViewModels
-@model CCSVolunteerMVC.ViewModels.VolunteerPositionViewModel
+@model CCSVolunteerMVC.ViewModels.VolunteerGroupPositionViewModel
 @{
 	ViewBag.Title = "Details of group";
 	///This screen displays the group that they are
 	///This all them to clock how many people they wish to clock in
+	///This list all the possible positions available for their volunteer work
 	var counter = Request["NumberOfPeople"];
 	var groupVolunteer = Model.Volunteer;
 	var positions = Model.Position;

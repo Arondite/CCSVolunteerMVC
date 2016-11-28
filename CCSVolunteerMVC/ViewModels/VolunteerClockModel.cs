@@ -6,6 +6,9 @@ using System.Web;
 
 namespace CCSVolunteerMVC.ViewModels
 {
+	/// <summary>
+	/// This is a view model that holds the list of volunteers
+	/// </summary>
 	public class VolunteerClockModel
 	{
 		private IEnumerable<Volunteer> _Volunteers;

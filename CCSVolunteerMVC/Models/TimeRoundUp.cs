@@ -5,6 +5,10 @@ using System.Web;
 
 namespace CCSVolunteerMVC.Models
 {
+	/// <summary>
+	/// Basic class to have the time rounded for the fifteen minutes
+	/// This was customer request.
+	/// </summary>
 	public class TimeRoundUp
 	{
 		public DateTime RoundUp(DateTimeOffset dt, TimeSpan d)

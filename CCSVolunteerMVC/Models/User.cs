@@ -5,6 +5,10 @@ using System.Web;
 
 namespace CCSVolunteerMVC.Models
 {
+	/// <summary>
+	/// This is a class that is used for storing the current volunteers at the station
+	/// This is the basic model that is needed to write to the database
+	/// </summary>
 	public class User
 	{
 		TimeRoundUp _timeRoundUp = new TimeRoundUp();

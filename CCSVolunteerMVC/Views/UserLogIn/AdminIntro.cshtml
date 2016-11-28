@@ -1,12 +1,15 @@
 ﻿@{
 	ViewBag.Title = "AdminIntro";
+	///This lists a couple of privaleges that the Admin has to edit data in the database
+	///This links to the Volunteer, VolunteerGroup, and Kiosk controllers
+	///This page can be further enhanced for future development
 	if (App.Admin != 1)
 	{
 		Response.Redirect("~/UserLogIn/Index");
 	}
 }
 
-<h2>Welcome</h2>
+<h2 class="jumbotron text-center">Welcome</h2>
 <br /><br />
 You have access to the following pages.
 <br /><br />

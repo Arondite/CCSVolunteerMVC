@@ -9,7 +9,8 @@ using CCSVolunteerMVC.DAL;
 namespace CCSVolunteerMVC.ViewModels
 {
 	/// <summary>
-	/// Creates multiple collection for display to the user
+	/// Creates multiple collection for display to the user. This is the human 
+	/// readable view of a volunteer from the database
 	/// </summary>
 	public class VolunteerViewModel
 	{

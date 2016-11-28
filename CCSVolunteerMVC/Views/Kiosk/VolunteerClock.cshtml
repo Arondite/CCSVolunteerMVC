@@ -3,6 +3,8 @@
 @model VolunteerClockModel
 @{
 	ViewBag.Title = "Volunteer Clock";
+	///This view asks the volunteer to enter their PIN in MMDDYY style. There is logic in the getter
+	///in the volunteer class that creates this pin. 
 	var group = Request["Group"];
 	if (!string.IsNullOrWhiteSpace(group))
 	{
@@ -17,16 +19,16 @@
 	}
 }
 
-<h2>Volunteer Sign In</h2>
+<h4 class="jumbotron text-center">Please Enter Your Pin.<br /> MMDDYY(example January 1, 1901 = 010101)</h4>
 
-<form action="@Url.Action("VolunteerPasswordList", "Kiosk")" method="post" class="form-horizontal" id="login">
+<form action="@Url.Action("VolunteerPasswordList", "Kiosk")" method="post" class="form-horizontal col-sm-offset-4" id="login">
 	<div class="form-group">
 		<div class="row">
-			<label class="col-md-2" for="Password">Volunteer's Pin:</label>
+			<label class="col-md-4 col-sm-offset-1" for="Password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;Volunteer's Pin</label>
 			<input class="form-control col-md-10" type="password" name="Password" id="Password">
 		</div>
-		<br />
-		<div class="row">
+		@*<div class="row">
 				<div class="row">
 					<div class="col-sm-1"></div>
 					<input onmouseup="document.getElementById('Password').value += this.value"
@@ -63,9 +65,8 @@
                               document.getElementById('Password').value = temp2;"
 						   type="button" class="btn btn-primary btn-xl" value="Backspace" />
 				</div>
-			</div>
-		</div>
-		<div class="row">
+			</div>*@
+		<div class="row ">
 			<span class="col-md-2"></span>
 			<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Clock In/Out">
 		</div>

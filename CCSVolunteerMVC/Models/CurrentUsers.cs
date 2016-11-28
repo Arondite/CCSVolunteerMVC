@@ -6,6 +6,11 @@ using System.Web;
 
 namespace CCSVolunteerMVC.Models
 {
+	/// <summary>
+	/// This is a static class that holds all of the users currently clocked in
+	/// This allows for the app to keep track during the day
+	/// This has many uses throughout the app
+	/// </summary>
 	public static class CurrentUsers
 	{
 		private static List<User> _users = new List<User>();
