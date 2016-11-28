@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace CCSVolunteerMVC.Controllers
 {
+	/// <summary>
+	/// A controller for the UserLogIn Views
+	/// </summary>
     public class UserLogInController : Controller
     {
         // GET: UserLogIn

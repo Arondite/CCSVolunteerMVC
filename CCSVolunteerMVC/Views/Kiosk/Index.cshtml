@@ -16,18 +16,17 @@
 	}
 }
 
-<h2>In or Out</h2>
-<form action="@Url.Action("VolunteerGroup", "Kiosk", new { action = "" })" method="post" class="form-horizontal" id="login">
-	<div class="col-sm-offset-2 col-sm-10">
-		<input class="btn btn-primary btn-lg btn-block" name="In" type="submit" id="In" formmethod="POST" title="In" value="In">
-		<input class="btn btn-secondary btn-lg btn-block" name="Out" type="submit" id="Out" formmethod="POST" title="Out" value="Out">
-	</div>
-</form>
-<br />
-<br />
-<br />
-<form action="" method="post" class="form-horizontal" id="logout">
-	<div class="col-sm-offset-2 col-sm-10">
-		<input class="btn btn-danger btn-lg btn-block" name="EndTerminal" type="submit" id="EndTerminal" formmethod="POST" title="Out" value="EndTerminal">	
-	</div>
-</form>
+<h2 class="jumbotron text-center">Please select whether you are clocking in or out</h2>
+<div>
+	<form action="@Url.Action("VolunteerGroup", "Kiosk", new { action = "" })" method="post" class="form-horizontal" id="login">
+		<div class="col-sm-offset-3 col-sm-10">
+			<input class="btn btn-primary btn-lg btn-block" name="In" type="submit" id="In" formmethod="POST" title="In" value="In">
+			<input class="btn btn-secondary btn-lg btn-block" name="Out" type="submit" id="Out" formmethod="POST" title="Out" value="Out">
+		</div>
+	</form>
+	<form action="" method="post" class="form-horizontal" id="logout">
+		<div class="col-sm-offset-3 col-sm-10">
+			<input class="btn btn-danger btn-lg btn-block" name="EndTerminal" type="submit" id="EndTerminal" formmethod="POST" title="Out" value="EndTerminal">
+		</div>
+	</form>
+</div>

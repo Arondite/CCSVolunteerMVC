@@ -10,6 +10,10 @@ using System.Net;
 
 namespace CCSVolunteerMVC.Controllers
 {
+	/// <summary>
+	/// The main controller that handles the data and views passed between the
+	/// view of the Kiosk application
+	/// </summary>
     public class KioskController : Controller
     {
 		private CCSContext db = new CCSContext();

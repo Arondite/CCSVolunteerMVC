@@ -1,6 +1,7 @@
 ﻿@using CCSVolunteerMVC.Models
 @{
 	ViewBag.Title = "CompleteSignIn";
+	///This is a simple page showing a successful log in
 	TimeRoundUp timeRoundUp = new TimeRoundUp();
 	var okay = Request["Okay"];
 	if (IsPost)
@@ -9,14 +10,14 @@
 	}
 }
 
-<h2>Completed Sign In</h2>
+<h2 class="jumbotron text-center">Completed Sign In</h2>
 
-<div>
-	You clocked in at @DateTimeOffset.Now.TimeOfDay
+<div class="text-center">
+	You clocked in at @DateTimeOffset.Now.DateTime
 </div>
-<div>
+<div class="text-center col-sm-offset-6">
 	<form action="" method="post">
-		<div class="col-md-10">
+		<div class="col-sm-6">
 			<input class="btn btn-primary btn-lg" name="Okay" type="submit" id="Okay" formmethod="POST" title="Submit" value="Okay">
 		</div>
 	</form>

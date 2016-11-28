@@ -1,7 +1,8 @@
 ﻿@using CCSVolunteerMVC.Models
 @{
-	TimeRoundUp timeRoundUp = new TimeRoundUp();
 	ViewBag.Title = "CompleteSignOut";
+	///This page shows that the user successfully signed out
+	TimeRoundUp timeRoundUp = new TimeRoundUp();
 	var okay = Request["Okay"];
 	if (IsPost)
 	{
@@ -9,12 +10,12 @@
 	}
 }
 
-<h2>Completed Sign Out</h2>
+<h2 class="jumbotron text-center">Completed Sign Out</h2>
 
-<div>
+<div class="text-center">
 	You clocked out at @timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15))
 </div>
-<div>
+<div class="text-center col-sm-offset-4">
 	<form action="" method="post">
 		<div class="col-md-10">
 			<input class="btn btn-primary btn-lg" name="Okay" type="submit" id="Okay" formmethod="POST" title="Submit" value="Okay">

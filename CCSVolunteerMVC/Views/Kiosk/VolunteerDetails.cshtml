@@ -44,7 +44,7 @@
 	}
 }
 
-<h2>Volunteer</h2>
+<h2 class="jumbotron text-center">Volunteer</h2>
 
 <div>
 	<hr />
@@ -65,22 +65,22 @@
 			@Html.DisplayFor(model => model.Volunteer.Volunteer.ElementAt(0).volLastName)
 		</dd>
 	</dl>
-</div>
-<div>
-	<form action="" method="post">
-		<div class="col-md-10">
-			<div class="form-group">
-				@Html.LabelFor(model => model.Positions, htmlAttributes: new { @class = "control-label col-sm-10" })
-				<div class="col-md-10">
-					<div class="row">
-						@Html.DropDownListFor(model => model.Positions, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
-						@Html.ValidationMessageFor(model => model.Positions, "", new { @class = "text-danger" })
-					</div>
-					<div class="row">
-						<input class="btn btn-primary btn-lg" name="SignIn" type="submit" id="SignIn" formmethod="POST" title="Submit" value="Submit">
+	<div class="container col-sm-offset-2">
+		<form action="" method="post">
+			<div class="col-md-10">
+				<div class="form-group">
+					@Html.LabelFor(model => model.Positions, htmlAttributes: new { @class = "control-label col-sm-10" })
+					<div class="col-md-10">
+						<div class="row">
+							@Html.DropDownListFor(model => model.Positions, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
+							@Html.ValidationMessageFor(model => model.Positions, "", new { @class = "text-danger" })
+						</div>
+						<div class="row">
+							<input class="btn btn-primary btn-lg" name="SignIn" type="submit" id="SignIn" formmethod="POST" title="Submit" value="Submit">
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </div>
