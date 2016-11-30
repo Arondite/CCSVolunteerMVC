@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201611262050129_AddedTable.Designer.cs">
       <DependentUpon>201611262050129_AddedTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611301701355_NullableIDsInHoursWorked.cs" />
+    <Compile Include="Migrations\201611301701355_NullableIDsInHoursWorked.Designer.cs">
+      <DependentUpon>201611301701355_NullableIDsInHoursWorked.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BooleanTitleMatch.cs" />
@@ -481,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611262050129_AddedTable.resx">
       <DependentUpon>201611262050129_AddedTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611301701355_NullableIDsInHoursWorked.resx">
+      <DependentUpon>201611301701355_NullableIDsInHoursWorked.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

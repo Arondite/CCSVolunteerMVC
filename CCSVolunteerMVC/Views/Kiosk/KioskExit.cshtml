@@ -9,6 +9,7 @@
 		var password = Request["password"];
 		if (username == "CCSAdmin" && password == "CCSAdmin")
 		{
+			App.Admin = 1;
 			CurrentUsers.ClockOutExcessUsers();
 			Response.Redirect("~/MessageScreens/EndTerminal");
 		}

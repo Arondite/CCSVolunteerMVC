@@ -37,11 +37,9 @@ namespace CCSVolunteerMVC.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime hrsWrkedSchedDate { get; set; }
-        public int volunteerID { get; set; }
+        public int? volunteerID { get; set; }
         public virtual Volunteer volunteer { get; set; }
-        public int volunteerGroupID { get; set; }
-        //todo vol group object
-
+        public int? volunteerGroupID { get; set; }
         [Display(Name = "Hours Worked Quantity")]
         public decimal hrsWrkdQty { get; set; }
 
