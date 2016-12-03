@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CCSVolunteerMVC.DAL;
 using System.Web;
+using System.Threading;
 
 namespace CCSVolunteerMVC.Models
 {
@@ -115,6 +116,7 @@ namespace CCSVolunteerMVC.Models
 					positionLocation = context.PositionLocations.Find(user.PositionKey)
 				};
 				context.HoursWorkeds.Add(hoursWorked);
+				Thread.Sleep(2000);
 				context.SaveChanges();
 			}
 		}
