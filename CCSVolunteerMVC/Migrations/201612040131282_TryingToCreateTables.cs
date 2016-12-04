@@ -3,7 +3,7 @@ namespace CCSVolunteerMVC.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TryingToGetDatabase : DbMigration
+    public partial class TryingToCreateTables : DbMigration
     {
         public override void Up()
         {

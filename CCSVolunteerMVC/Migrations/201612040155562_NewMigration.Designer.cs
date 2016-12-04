@@ -7,13 +7,13 @@ namespace CCSVolunteerMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class TryingToGetDatabase : IMigrationMetadata
+    public sealed partial class NewMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TryingToGetDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201612040034336_TryingToGetDatabase"; }
+            get { return "201612040155562_NewMigration"; }
         }
         
         string IMigrationMetadata.Source

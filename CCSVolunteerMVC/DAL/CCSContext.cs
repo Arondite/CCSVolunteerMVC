@@ -26,7 +26,8 @@ namespace CCSVolunteerMVC.DAL
 		public DbSet<Position> Positions { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-        }
+			//modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+			Database.SetInitializer<CCSContext>(new CreateDatabaseIfNotExists<CCSContext>());
+		}
     }
+}

@@ -286,9 +286,13 @@
     <Compile Include="Migrations\201611301701355_NullableIDsInHoursWorked.Designer.cs">
       <DependentUpon>201611301701355_NullableIDsInHoursWorked.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612040034336_TryingToGetDatabase.cs" />
-    <Compile Include="Migrations\201612040034336_TryingToGetDatabase.Designer.cs">
-      <DependentUpon>201612040034336_TryingToGetDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201612040131282_TryingToCreateTables.cs" />
+    <Compile Include="Migrations\201612040131282_TryingToCreateTables.Designer.cs">
+      <DependentUpon>201612040131282_TryingToCreateTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612040155562_NewMigration.cs" />
+    <Compile Include="Migrations\201612040155562_NewMigration.Designer.cs">
+      <DependentUpon>201612040155562_NewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -520,8 +524,11 @@
     <EmbeddedResource Include="Migrations\201611301701355_NullableIDsInHoursWorked.resx">
       <DependentUpon>201611301701355_NullableIDsInHoursWorked.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612040034336_TryingToGetDatabase.resx">
-      <DependentUpon>201612040034336_TryingToGetDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612040131282_TryingToCreateTables.resx">
+      <DependentUpon>201612040131282_TryingToCreateTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612040155562_NewMigration.resx">
+      <DependentUpon>201612040155562_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
