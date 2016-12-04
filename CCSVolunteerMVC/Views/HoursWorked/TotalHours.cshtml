@@ -1,0 +1,76 @@
+﻿@model CCSVolunteerMVC.ViewModels.TotalHoursWorkedViewModel
+
+@{
+	ViewBag.Title = "TotalHours";
+	var startDate = Request["StartDate"];
+	var endDate = Request["EndDate"];
+}
+
+
+<h2>TotalHours</h2>
+<form action="@Url.Action("TotalHours", "HoursWorked", new { StartDate = startDate, EndDate = endDate})" method="post" class="form-horizontal" id="DateRange">
+	<div class="form-group">
+		<div class="row">
+			<label class="col-md-2" for="StartDate">Starting Date</label>
+			<input class="form-control col-md-10" type="date" name="StartDate" id="StartDate">
+		</div>
+		<div class="row">
+			<label class="col-md-2" for="EndDate">Ending Date</label>
+			<input class="form-control col-md-10" type="date" name="EndDate" id="EndDate">
+		</div>
+		<div class="row">
+			<input class="btn btn-primary" name="DateRange" type="submit" formmethod="POST" title="DateRange" />
+		</div>
+	</div>
+</form>
+
+@if (IsPost)
+{
+
+
+	<table class="table">
+		<tr>
+			<th>
+				Date
+			</th>
+			<th>
+				Individual Hours
+			</th>
+			<th>
+				Group Hours
+			</th>
+		</tr>
+
+		@foreach (var item in Model.workDates)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.day)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.individualHours)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.groupHours)
+				</td>
+
+			</tr>
+		}
+		<tr>
+			<td>
+				TOTAL
+			</td>
+			<td>
+				@Html.Display(Model.individualTotal.ToString())
+			</td>
+			<td>
+				@Html.Display(Model.groupTotal.ToString())
+			</td>
+		</tr>
+
+	</table>
+
+
+}
+
+

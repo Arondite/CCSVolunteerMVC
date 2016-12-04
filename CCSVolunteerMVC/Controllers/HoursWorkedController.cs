@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CCSVolunteerMVC.DAL;
 using CCSVolunteerMVC.Models;
+using CCSVolunteerMVC.ViewModels;
 
 namespace CCSVolunteerMVC.Controllers
 {
@@ -15,8 +16,64 @@ namespace CCSVolunteerMVC.Controllers
     {
         private CCSContext db = new CCSContext();
 
-        // GET: HoursWorked
-        public ActionResult Index()
+		public ActionResult TotalHours(DateTime? startDate, DateTime? endDate)
+		{
+
+
+			var totalHoursWorked = new TotalHoursWorkedViewModel();
+			var listOfWorkDates = new List<WorkDate>();
+
+
+			var dayQuerySingle = db.HoursWorkeds.Where(r => r.hrsWrkedSchedDate.Date >= startDate && r.hrsWrkedSchedDate.Date <= endDate)
+			.Select(r => r);
+
+
+
+			foreach (var day in db.HoursWorkeds
+				.Where(r => r.hrsWrkedSchedDate.Date >= startDate && r.hrsWrkedSchedDate.Date <= endDate).
+				Select(p => p.hrsWrkedSchedDate).Distinct())
+			{
+				WorkDate temp = new WorkDate();
+				temp.day = day; // temp workdate to add to list through iterations
+				temp.individualHours = 0;
+				temp.groupHours = 0;
+				listOfWorkDates.Add(temp);
+			}
+
+			foreach (var record in dayQuerySingle)
+			{
+				foreach (WorkDate workDay in listOfWorkDates)
+				{
+					if (workDay.day.Date == record.hrsWrkedSchedDate.Date)
+					{
+						if (record.volunteerID != null) // if individual volunteer
+						{
+							workDay.individualHours += record.hrsWrkdQty;
+						}
+						else if (record.volunteerID == null) // if group volunteer
+						{
+							workDay.groupHours += record.hrsWrkdQty;
+						}
+					}
+				}
+			}
+
+			foreach (WorkDate workDay in listOfWorkDates)
+			{
+				totalHoursWorked.individualTotal += workDay.individualHours;
+				totalHoursWorked.groupTotal += workDay.groupHours;
+			}
+
+			totalHoursWorked.workDates = listOfWorkDates;
+			totalHoursWorked.startingDay = (DateTime)(startDate);
+			totalHoursWorked.endingDay = (DateTime)endDate;
+
+
+			return View(totalHoursWorked);
+		}
+
+		// GET: HoursWorked
+		public ActionResult Index()
         {
             return View(db.HoursWorkeds.ToList());
         }

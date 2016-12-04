@@ -1,0 +1,15 @@
+﻿@{
+	ViewBag.Title = "AdminIntro";
+	if (App.Admin != 1)
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
+}
+
+<h2>Welcome</h2>
+<br /><br />
+Choose a report to generate results off of Database.
+<br /><br />
+<div class="list-group">
+	<a href="@Url.Action("TotalHours", "HoursWorked")" class="list-group-item">Total Hours Worked By Date Range</a>
+</div>

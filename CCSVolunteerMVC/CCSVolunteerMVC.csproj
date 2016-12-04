@@ -237,6 +237,7 @@
     <Compile Include="Controllers\MessageScreensController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\PositionLocationController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\UserLogInController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Controllers\VolunteerGroupController.cs" />
@@ -272,9 +273,11 @@
     <Compile Include="Models\VolunteerGroup.cs" />
     <Compile Include="Models\VolunteerLanguage.cs" />
     <Compile Include="Models\VolunteerTraining.cs" />
+    <Compile Include="Models\WorkDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CombinedSearchViewModel.cs" />
+    <Compile Include="ViewModels\TotalHoursWorkedViewModel.cs" />
     <Compile Include="ViewModels\VolunteerClockModel.cs" />
     <Compile Include="ViewModels\VolunteerGroupPositionViewModel.cs" />
     <Compile Include="ViewModels\VolunteerPositionViewModel.cs" />
@@ -437,6 +440,8 @@
     <Content Include="Views\Position\Details.cshtml" />
     <Content Include="Views\Position\Edit.cshtml" />
     <Content Include="Views\Position\Index.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\HoursWorked\TotalHours.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
