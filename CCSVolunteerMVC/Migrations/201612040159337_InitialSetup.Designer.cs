@@ -7,13 +7,13 @@ namespace CCSVolunteerMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class UpdateGroup : IMigrationMetadata
+    public sealed partial class InitialSetup : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateGroup));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSetup));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611222340201_UpdateGroup"; }
+            get { return "201612040159337_InitialSetup"; }
         }
         
         string IMigrationMetadata.Source

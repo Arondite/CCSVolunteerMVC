@@ -246,53 +246,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611090115047_InitialSeed.cs" />
-    <Compile Include="Migrations\201611090115047_InitialSeed.Designer.cs">
-      <DependentUpon>201611090115047_InitialSeed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611161901498_UpdateOfPin.cs" />
-    <Compile Include="Migrations\201611161901498_UpdateOfPin.Designer.cs">
-      <DependentUpon>201611161901498_UpdateOfPin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611161924282_FixedCourtOrderedLogic.cs" />
-    <Compile Include="Migrations\201611161924282_FixedCourtOrderedLogic.Designer.cs">
-      <DependentUpon>201611161924282_FixedCourtOrderedLogic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611161931310_CheckingAdditionalParameters.cs" />
-    <Compile Include="Migrations\201611161931310_CheckingAdditionalParameters.Designer.cs">
-      <DependentUpon>201611161931310_CheckingAdditionalParameters.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611161933482_TakingBackStupidity.cs" />
-    <Compile Include="Migrations\201611161933482_TakingBackStupidity.Designer.cs">
-      <DependentUpon>201611161933482_TakingBackStupidity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611161952336_DropDownBoxDisplay.cs" />
-    <Compile Include="Migrations\201611161952336_DropDownBoxDisplay.Designer.cs">
-      <DependentUpon>201611161952336_DropDownBoxDisplay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611222340201_UpdateGroup.cs" />
-    <Compile Include="Migrations\201611222340201_UpdateGroup.Designer.cs">
-      <DependentUpon>201611222340201_UpdateGroup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611240018447_FixingSearchEntry.cs" />
-    <Compile Include="Migrations\201611240018447_FixingSearchEntry.Designer.cs">
-      <DependentUpon>201611240018447_FixingSearchEntry.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611262050129_AddedTable.cs" />
-    <Compile Include="Migrations\201611262050129_AddedTable.Designer.cs">
-      <DependentUpon>201611262050129_AddedTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611301701355_NullableIDsInHoursWorked.cs" />
-    <Compile Include="Migrations\201611301701355_NullableIDsInHoursWorked.Designer.cs">
-      <DependentUpon>201611301701355_NullableIDsInHoursWorked.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612040131282_TryingToCreateTables.cs" />
-    <Compile Include="Migrations\201612040131282_TryingToCreateTables.Designer.cs">
-      <DependentUpon>201612040131282_TryingToCreateTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612040155562_NewMigration.cs" />
-    <Compile Include="Migrations\201612040155562_NewMigration.Designer.cs">
-      <DependentUpon>201612040155562_NewMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201612040159337_InitialSetup.cs" />
+    <Compile Include="Migrations\201612040159337_InitialSetup.Designer.cs">
+      <DependentUpon>201612040159337_InitialSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -494,41 +450,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611090115047_InitialSeed.resx">
-      <DependentUpon>201611090115047_InitialSeed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611161901498_UpdateOfPin.resx">
-      <DependentUpon>201611161901498_UpdateOfPin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611161924282_FixedCourtOrderedLogic.resx">
-      <DependentUpon>201611161924282_FixedCourtOrderedLogic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611161931310_CheckingAdditionalParameters.resx">
-      <DependentUpon>201611161931310_CheckingAdditionalParameters.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611161933482_TakingBackStupidity.resx">
-      <DependentUpon>201611161933482_TakingBackStupidity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611161952336_DropDownBoxDisplay.resx">
-      <DependentUpon>201611161952336_DropDownBoxDisplay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611222340201_UpdateGroup.resx">
-      <DependentUpon>201611222340201_UpdateGroup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611240018447_FixingSearchEntry.resx">
-      <DependentUpon>201611240018447_FixingSearchEntry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611262050129_AddedTable.resx">
-      <DependentUpon>201611262050129_AddedTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611301701355_NullableIDsInHoursWorked.resx">
-      <DependentUpon>201611301701355_NullableIDsInHoursWorked.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612040131282_TryingToCreateTables.resx">
-      <DependentUpon>201612040131282_TryingToCreateTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612040155562_NewMigration.resx">
-      <DependentUpon>201612040155562_NewMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612040159337_InitialSetup.resx">
+      <DependentUpon>201612040159337_InitialSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
