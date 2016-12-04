@@ -7,12 +7,12 @@ namespace CCSVolunteerMVC.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Volunteer", "ethName", c => c.String());
+            //AddColumn("dbo.Volunteer", "ethName", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Volunteer", "ethName");
+            //DropColumn("dbo.Volunteer", "ethName");
         }
     }
 }

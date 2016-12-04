@@ -7,12 +7,12 @@ namespace CCSVolunteerMVC.Migrations
     {
         public override void Up()
         {
-            AlterColumn("dbo.Volunteer", "volPin", c => c.String());
+            //AlterColumn("dbo.Volunteer", "volPin", c => c.String());
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Volunteer", "volPin", c => c.Int(nullable: false));
+            //AlterColumn("dbo.Volunteer", "volPin", c => c.Int(nullable: false));
         }
     }
 }
