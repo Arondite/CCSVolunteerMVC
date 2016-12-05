@@ -116,7 +116,6 @@ namespace CCSVolunteerMVC.Models
 					positionLocation = context.PositionLocations.Find(user.PositionKey)
 				};
 				context.HoursWorkeds.Add(hoursWorked);
-				Thread.Sleep(2000);
 				context.SaveChanges();
 			}
 		}
