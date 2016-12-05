@@ -24,10 +24,10 @@
 			CurrentUsers.AddUser(tempUser);
 			if (Model.Volunteer.Volunteer.ElementAt(0).volsCourtOrdered == 1)
 			{
-				Response.Redirect("~/MessageScreens/CourtOrderedScreen");
+				Response.Redirect(string.Format("~/MessageScreens/CourtOrderedScreen/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
 			}
 			else {
-				Response.Redirect("~/MessageScreens/CompleteSignIn");
+				Response.Redirect(string.Format("~/MessageScreens/CompleteSignIn/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
 			}
 		}
 		else {
@@ -35,7 +35,7 @@
 			if (tempCheck > 0)
 			{
 				CurrentUsers.UpdateVolunteerTimeOut(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, "");
-				Response.Redirect("~/MessageScreens/CompleteSignOut");
+				Response.Redirect(string.Format("~/MessageScreens/CompleteSignOut/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
 			}
 			else {
 				Response.Redirect("~/MessageScreens/NoRecords");

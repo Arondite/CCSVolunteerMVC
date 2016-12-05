@@ -1,21 +1,18 @@
 ﻿
 @{
-	ViewBag.Title = "NoRecords";
+	ViewBag.Title = "No Records";
 	///This is the screen that is displayed when the volunteer is not
 	///shown in the CurrentUser collection in the app
-	var okay = Request["Okay"];
-	if (IsPost)
+	if (App.Refresh == 0)
+	{
+		App.Refresh = 1;
+	}
+	else
 	{
 		Response.Redirect("~/Kiosk/Index");
 	}
 }
-
+<head>
+	<meta http-equiv="refresh" content="3">
+</head>
 <h2 class="jumbotron text-center">No Records of user signed in</h2>
-
-<div class="text-center col-sm-offset-4">
-	<form action="" method="post">
-		<div class="col-md-10">
-			<input class="btn btn-primary btn-lg" name="Okay" type="submit" id="Okay" formmethod="POST" title="Submit" value="Okay">
-		</div>
-	</form>
-</div>

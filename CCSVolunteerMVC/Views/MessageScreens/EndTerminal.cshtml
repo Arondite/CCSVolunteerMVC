@@ -1,7 +1,17 @@
 ﻿
 @{
-    ViewBag.Title = "EndTerminal";
+	ViewBag.Title = "EndTerminal";
 	///Screen displayed after the terminal has been ended by the administration
+	if (App.Refresh == 0)
+	{
+		App.Refresh = 1;
+	}
+	else
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
 }
-
+<head>
+	<meta http-equiv="refresh" content="3">
+</head>
 <h2 class="jumbotron text-center">Terminal Has Ended</h2>

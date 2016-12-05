@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<string>
 @{
 	ViewBag.Title = "Kiosk Volunteer or Group";
+	App.Refresh = 0;
 	///This screen is for the choice if the volunteer is a group or individual
 	///This screen also sets the global variable for the clock in/out
 	var volunteer = Request["Volunteer"];

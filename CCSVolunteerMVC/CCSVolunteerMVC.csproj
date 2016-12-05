@@ -265,6 +265,7 @@
     <Compile Include="Models\HoursWorked.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MessageScreenModel.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\PositionLocation.cs" />
     <Compile Include="Models\TimeRoundUp.cs" />

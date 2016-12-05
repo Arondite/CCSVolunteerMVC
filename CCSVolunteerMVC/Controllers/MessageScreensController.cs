@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CCSVolunteerMVC.DAL;
+using CCSVolunteerMVC.Models;
 
 namespace CCSVolunteerMVC.Controllers
 {
@@ -11,6 +13,7 @@ namespace CCSVolunteerMVC.Controllers
 	/// </summary>
     public class MessageScreensController : Controller
     {
+		private CCSContext db = new CCSContext();
         // GET: MessageScreens
 		/// <summary>
 		/// Not used in the current application
@@ -24,17 +27,34 @@ namespace CCSVolunteerMVC.Controllers
 		/// This is a screen that tells the user that they successfully logged in
 		/// </summary>
 		/// <returns>A view displaying the info</returns>
-		public ActionResult CompleteSignIn()
+		public ActionResult CompleteSignIn(int? id)
 		{
-			return View();
+			var tempModel = new MessageScreenModel();
+			if (db.Volunteers.Where(v => v.volunteerID == id).Any()) {
+				tempModel.Volunteer = db.Volunteers.Where(v => v.volunteerID == id).Single();
+			}
+			if (db.VolunteerGroups.Where(v => v.volunteerGroupID == id).Any())
+			{
+				tempModel.VolunteerGroup = db.VolunteerGroups.Where(v => v.volunteerGroupID == id).Single();
+			}
+			return View(tempModel);
 		}
 		/// <summary>
 		/// This returns a screen that tells the user that they successfully logged out
 		/// </summary>
 		/// <returns>A view displaying the info</returns>
-		public ActionResult CompleteSignOut()
+		public ActionResult CompleteSignOut(int? id)
 		{
-			return View();
+			var tempModel = new MessageScreenModel();
+			if (db.Volunteers.Where(v => v.volunteerID == id).Any())
+			{
+				tempModel.Volunteer = db.Volunteers.Where(v => v.volunteerID == id).Single();
+			}
+			if (db.VolunteerGroups.Where(v => v.volunteerGroupID == id).Any())
+			{
+				tempModel.VolunteerGroup = db.VolunteerGroups.Where(v => v.volunteerGroupID == id).Single();
+			}
+			return View(tempModel);
 		}
 		/// <summary>
 		/// This is a screen that tells the user that they have to talk to an adminstration to clock out
