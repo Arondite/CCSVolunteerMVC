@@ -8,22 +8,34 @@
 	///This list all the possible positions available for their volunteer work
 	var counter = Request["NumberOfPeople"];
 	var groupVolunteer = Model.Volunteer;
+	var groupCount = CurrentUsers.Users.Where(v => v.GroupId == groupVolunteer.volunteerGroupID).Count();
 	var positions = Model.Position;
 	var positionSelection = Request["Position"];
 	int positionId;
+	var overCount = false;
 
+
+	if (App.TimeInTimeOut == "In")
+	{
+		groupCount = 50;
+	}
 	List<SelectListItem> selectListItem = new List<SelectListItem>();
 	foreach (var item in positions)
 	{
 		selectListItem.Add(new SelectListItem()
 		{
-			Text = item.PositionTitle, Value = item.PositionID.ToString()
+			Text = item.PositionTitle,
+			Value = item.PositionID.ToString()
 		});
 	}
 	var pin = Request["Pin"];
 	int numberOfPeople;
 	if (int.TryParse(counter, out numberOfPeople))
 	{
+		if (numberOfPeople > groupCount)
+		{
+			overCount = true;
+		}
 		if (numberOfPeople > 0)
 		{
 			if (App.TimeInTimeOut == "In")
@@ -38,7 +50,8 @@
 				}
 				Response.Redirect(string.Format("~/MessageScreens/CompleteSignIn/{0}", groupVolunteer.volunteerGroupID));
 
-			}else
+			}
+			else if(!overCount)
 			{
 				List<User> tempUsers = new List<User>(CurrentUsers.Users);
 
@@ -58,11 +71,12 @@
 				Response.Redirect(string.Format("~/MessageScreens/CompleteSignOut/{0}", groupVolunteer.volunteerGroupID));
 			}
 		}
-		else if(numberOfPeople <= 0)
+		else if (numberOfPeople <= 0)
 		{
 			Response.Redirect("~/MessageScreens/NoRecords");
 		}
 	}
+
 }
 
 <h2 class="jumbotron text-center">Volunteer Group</h2>
@@ -87,10 +101,16 @@
 		</dd>
 	</dl>
 </div>
+@if (App.TimeInTimeOut == "Out")
+{
+	<div>
+		<h4>You currently have @groupCount clocked in</h4>
+	</div>
+}
 <form action="" method="post">
 	<div class="form-group row">
 		<div class="col-sm-10">
-			<input name="NumberOfPeople" class="form-control col-sm-10" type="number" value="" id="groupPin" placeholder="Number of People" />
+			<input name="NumberOfPeople" class="form-control col-sm-10" type="number" value="" id="groupPin" placeholder="Number of People" min="1" />
 		</div>
 		<div class="col-sm-10">
 			<input onmouseup="document.getElementById('groupPin').value -= -1;"
@@ -98,23 +118,24 @@
 			<input onmouseup="document.getElementById('groupPin').value > 1 ? document.getElementById('groupPin').value -= 1 : null;"
 				   type="button" class="btn btn-lg btn-primary btn-xl col-sm-5" value="-" />
 		</div>
-		@if(App.TimeInTimeOut == "In")
-		{ 
-		<div class="col-sm-10">
-			<div class="form-group">
-				@Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-sm-10" })
-				<div class="col-md-10">
-					<div class="row">
-						@Html.DropDownListFor(model => model.Position, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
-						@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+		<div class="container">
+			@if (App.TimeInTimeOut == "In")
+			{
+				<div class="col-sm-10">
+					<div class="form-group">
+						@Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-sm-10" })
+						<div class="col-md-10">
+							<div class="row">
+								@Html.DropDownListFor(model => model.Position, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
+								@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+							</div>
+						</div>
 					</div>
-					
 				</div>
+			}
+			<div>
+				<input class="btn btn-primary btn-xl btn-block" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
 			</div>
-		</div>
-		}
-		<div class="row">
-			<input class="btn btn-primary btn-block" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
 		</div>
 		<div class="col-sm-10">
 			<a href="@Url.Action("GroupClock", "Kiosk", new { alphabetChar = "A"})">&nbspBack to Group Listing</a>

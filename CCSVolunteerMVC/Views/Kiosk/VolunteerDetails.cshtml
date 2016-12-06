@@ -26,18 +26,21 @@
 			{
 				Response.Redirect(string.Format("~/MessageScreens/CourtOrderedScreen/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
 			}
-			else {
+			else
+			{
 				Response.Redirect(string.Format("~/MessageScreens/CompleteSignIn/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
 			}
 		}
-		else {
+		else
+		{
 			int tempCheck = CurrentUsers.Users.Where(u => u.UserId == Model.Volunteer.Volunteer.ElementAt(0).volunteerID).Count();
 			if (tempCheck > 0)
 			{
 				CurrentUsers.UpdateVolunteerTimeOut(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, "");
 				Response.Redirect(string.Format("~/MessageScreens/CompleteSignOut/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
 			}
-			else {
+			else
+			{
 				Response.Redirect("~/MessageScreens/NoRecords");
 			}
 		}
@@ -67,21 +70,20 @@
 	</dl>
 	<div class="container col-sm-offset-2">
 		<form action="" method="post">
-			<div class="col-md-10">
-				@if(App.TimeInTimeOut == "In")
-				{ 
-				<div class="form-group">
-					@Html.LabelFor(model => model.Positions, htmlAttributes: new { @class = "control-label col-sm-10" })
-					<div class="col-md-10">
-						<div class="row">
-							@Html.DropDownListFor(model => model.Positions, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
-							@Html.ValidationMessageFor(model => model.Positions, "", new { @class = "text-danger" })
+			<div class="col-md-10 container">
+				@if (App.TimeInTimeOut == "In")
+				{
+					<div class="form-group">
+						@Html.LabelFor(model => model.Positions, htmlAttributes: new { @class = "control-label col-sm-10" })
+						<div class="col-md-10">
+							<div class="row">
+								@Html.DropDownListFor(model => model.Positions, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
+								@Html.ValidationMessageFor(model => model.Positions, "", new { @class = "text-danger" })
+							</div>
 						</div>
-						
 					</div>
-				</div>
 				}
-				<div class="row">
+				<div>
 					<input class="btn btn-primary" name="SignIn" type="submit" id="SignIn" formmethod="POST" title="Submit" value="Submit">
 				</div>
 			</div>

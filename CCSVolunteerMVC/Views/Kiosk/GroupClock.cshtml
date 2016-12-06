@@ -94,8 +94,8 @@
 				@Html.DisplayFor(modelItem => item.volGrpIsActive)
 			</td>*@
 			<td>
-				<a href="@Url.Action("GroupLogin", "Kiosk", new { id = item.volunteerGroupID })">Select</a>
-
+				@*<a href="@Url.Action("GroupLogin", "Kiosk", new { id = item.volunteerGroupID })">Select</a>*@
+				<button class="btn btn-block btn-primary" onclick="location.href='@Url.Action("GroupLogin", "Kiosk", new { id = item.volunteerGroupID})'">Select</button>
 			</td>
 		</tr>
 	}
