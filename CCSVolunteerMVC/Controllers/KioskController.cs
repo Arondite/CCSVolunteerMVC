@@ -127,6 +127,35 @@ namespace CCSVolunteerMVC.Controllers
 			VolunteerPositionViewModel volunteerPositionViewModel = new VolunteerPositionViewModel(volunteerViewModel, db.Positions.ToList());
 			return View(volunteerPositionViewModel);
 		}
+		public ActionResult NewVolunteer()
+		{
+			return View();
+		}
+
+		// POST: Volunteer/Create
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult NewVolunteer([Bind(Include = "volunteerID,volFirstName,volLastName,volDOB,volGender,ethnicityID")] Volunteer volunteer)
+		{
+			/*volPin,*/
+			/*volJoinDate,volsCourtOrdered,*/
+			/*,volsClient,volsActive*/
+			if (ModelState.IsValid)
+			{
+				volunteer.volJoinDate = DateTime.Now.Date;
+				volunteer.volsCourtOrdered = 0;
+				volunteer.volsClient = 0;
+				volunteer.volsActive = 1;
+				volunteer.volPin = volunteer.volPin;
+				db.Volunteers.Add(volunteer);
+				db.SaveChanges();
+				return RedirectToAction("VolunteerDetails", new { id = volunteer.volunteerID});
+			}
+
+			return View(volunteer);
+		}
 		/// <summary>
 		/// This is a login screen where the Admin must put their username and password
 		/// to clock out the Kiosk. If correct input, it will clock everyone out that forgot to 

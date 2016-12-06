@@ -443,6 +443,7 @@
     <Content Include="Views\Position\Index.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\HoursWorked\TotalHours.cshtml" />
+    <Content Include="Views\Kiosk\NewVolunteer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

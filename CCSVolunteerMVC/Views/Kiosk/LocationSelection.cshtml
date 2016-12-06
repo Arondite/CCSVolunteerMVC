@@ -10,11 +10,11 @@
 		var saltLakeCity = Request["Salt Lake City"];
 		if (!string.IsNullOrWhiteSpace(ogden))
 		{
-			App.Location = ogden;
+			App.Location = "2";
 		}
 		else
 		{
-			App.Location = saltLakeCity;
+			App.Location = "1";
 		}
 		Response.Redirect("~/Kiosk/Index");
 	}

@@ -6,6 +6,7 @@
 	///This is the View that displays the volunteers information that will allow them to clock in/out and submit which
 	///position they held for the volunteer work
 	List<SelectListItem> selectListItem = new List<SelectListItem>();
+	var appLocation = App.Location;
 	foreach (var item in Model.Positions)
 	{
 		selectListItem.Add(new SelectListItem()
@@ -15,12 +16,14 @@
 		});
 	}
 	var position = Request["Positions"];
+	int locationId = 0;
+	
 	if (IsPost)
 	{
 		int positionId = 0;
-		if (App.TimeInTimeOut == "In" && int.TryParse(position, out positionId))
+		if (App.TimeInTimeOut == "In" && int.TryParse(position, out positionId) && int.TryParse(appLocation, out locationId))
 		{
-			User tempUser = new User(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, 1, positionId, 3, "");
+			User tempUser = new User(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, 1, positionId, 3, "", locationId);
 			CurrentUsers.AddUser(tempUser);
 			if (Model.Volunteer.Volunteer.ElementAt(0).volsCourtOrdered == 1)
 			{

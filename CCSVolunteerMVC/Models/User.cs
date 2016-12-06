@@ -14,6 +14,7 @@ namespace CCSVolunteerMVC.Models
 		TimeRoundUp _timeRoundUp = new TimeRoundUp();
 		public int UserId { get; set; }
 		public int GroupId { get; set; }
+		public int PositionLocationId { get; set; }
 		public int PositionKey { get; set; }
 		public int UserAccount { get; set; }
 		public DateTime HoursWorkedDate { get; set; }
@@ -23,7 +24,7 @@ namespace CCSVolunteerMVC.Models
 		public string HoursWorkedType { get; set; }
 		public decimal HoursWorkedQuantity { get; set; }
 		public string GroupName { get; set; }
-		public User(int userId, int groupId, int positionKey, int userAccount, string groupName )
+		public User(int userId, int groupId, int positionKey, int userAccount, string groupName, int positionLocationId )
 		{
 			UserId = userId;
 			GroupId = groupId;
@@ -36,6 +37,7 @@ namespace CCSVolunteerMVC.Models
 			ModifiedOn = DateTime.UtcNow;
 			HoursWorkedType = "A";
 			HoursWorkedQuantity = 1;
+			PositionLocationId = positionLocationId;
 		}
 	}
 }

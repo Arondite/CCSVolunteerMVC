@@ -90,7 +90,7 @@ namespace CCSVolunteerMVC.Models
 						volunteerID = item.UserId,
 						volunteerGroupID = item.GroupId,
 						volunteer = context.Volunteers.Find(item.UserId),
-						positionLocation = context.PositionLocations.Find(item.PositionKey)
+						positionLocationID = item.PositionLocationId
 					});
 					context.SaveChanges();
 				}
@@ -113,7 +113,8 @@ namespace CCSVolunteerMVC.Models
 					volunteerID = user.UserId,
 					volunteerGroupID = user.GroupId,
 					volunteer = context.Volunteers.Find(user.UserId),
-					positionLocation = context.PositionLocations.Find(user.PositionKey)
+					positionLocation = context.PositionLocations.Find(user.PositionKey),
+					positionLocationID = user.PositionLocationId
 				};
 				context.HoursWorkeds.Add(hoursWorked);
 				context.SaveChanges();

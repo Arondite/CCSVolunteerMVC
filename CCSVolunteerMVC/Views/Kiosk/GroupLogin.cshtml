@@ -12,6 +12,8 @@
 	var positions = Model.Position;
 	var positionSelection = Request["Position"];
 	int positionId;
+	var appLocation = App.Location;
+	int positionLocationId = 0;
 	var overCount = false;
 
 
@@ -42,9 +44,9 @@
 			{
 				for (int i = 0; i < numberOfPeople; i++)
 				{
-					if (int.TryParse(positionSelection, out positionId))
+					if (int.TryParse(positionSelection, out positionId) && int.TryParse(appLocation, out positionLocationId))
 					{
-						User tempUser = new User(1, groupVolunteer.volunteerGroupID, positionId, 3, groupVolunteer.volGrpName);
+						User tempUser = new User(1, groupVolunteer.volunteerGroupID, positionId, 3, groupVolunteer.volGrpName, positionLocationId);
 						CurrentUsers.AddUser(tempUser);
 					}
 				}

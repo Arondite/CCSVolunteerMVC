@@ -42,13 +42,18 @@ namespace CCSVolunteerMVC.Models
 					{
 						pinArr[0] = "0" + pinArr[0];
 					}
+					if (pinArr[1].Length == 1)
+					{
+						pinArr[1] = "0" + pinArr[1];
+					}
 					foreach (var item in pinArr)
 					{
 						pinValue += item;
 					}
 					if (int.TryParse(pinValue, out tempPin))
 					{
-						return _VolPin;
+						//return _VolPin;
+						return pinValue;
 					}
 					return null;
 				}
