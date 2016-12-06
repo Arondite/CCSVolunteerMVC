@@ -98,6 +98,8 @@
 			<input onmouseup="document.getElementById('groupPin').value > 1 ? document.getElementById('groupPin').value -= 1 : null;"
 				   type="button" class="btn btn-lg btn-primary btn-xl col-sm-5" value="-" />
 		</div>
+		@if(App.TimeInTimeOut == "In")
+		{ 
 		<div class="col-sm-10">
 			<div class="form-group">
 				@Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-sm-10" })
@@ -106,12 +108,13 @@
 						@Html.DropDownListFor(model => model.Position, selectListItem, htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
 						@Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
 					</div>
-					<div class="row">
-						<input class="btn btn-primary btn-block" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
-
-					</div>
+					
 				</div>
 			</div>
+		</div>
+		}
+		<div class="row">
+			<input class="btn btn-primary btn-block" name="GroupPin" type="submit" id="GroupPin" formmethod="POST" title="GroupPin" value="Submit">
 		</div>
 		<div class="col-sm-10">
 			<a href="@Url.Action("GroupClock", "Kiosk", new { alphabetChar = "A"})">&nbspBack to Group Listing</a>
