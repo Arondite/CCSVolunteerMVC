@@ -27,14 +27,14 @@
 <div class="container form-horizontal text-center">
 	<form action="@Url.Action("VolunteerPasswordList", "Kiosk")" method="post" class="form-horizontal col-sm-offset-4" id="login">
 		<div class="form-group">
-			<div class="row">
+			<div class="row" style="margin-left: 200px">
 				<label class="col-sm-4 col-sm-offset-1" for="Password">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;Volunteer's Pin
 				</label>
 				<input class="form-control col-md-10" type="tel" maxlength="6" pattern="[0-9]*" inputmode="numeric" name="Password" id="Password">
 			</div>
-			<div class="row ">
+			<div class="row" style="margin-left: 200px">
 				<span class="col-md-2"></span>
 				<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Clock In/Out">
 			</div>
