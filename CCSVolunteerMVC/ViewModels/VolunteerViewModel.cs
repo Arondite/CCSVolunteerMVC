@@ -38,33 +38,37 @@ namespace CCSVolunteerMVC.ViewModels
 			//via ViewModel. This will take the bad data from the database and make it useful.
 			foreach (var item in Volunteer)
 			{
-				Ethnicity.Add(EthnicityCollection.Where(i => i.ethnicityID == item.ethnicityID).Select(i => i).First());
-				if (item.volsActive == 0)
+				if (item.ethnicityID != null)
 				{
-					IsActive.Add(new BooleanTitleMatch() { DatabaseBitValue = 0, Value = "No" });
-				} else
-				{
-					IsActive.Add(new BooleanTitleMatch() { DatabaseBitValue = 1, Value = "Yes" });
+					Ethnicity.Add(EthnicityCollection.Where(i => i.ethnicityID == item.ethnicityID).Select(i => i).First());
+					if (item.volsActive == 0)
+					{
+						IsActive.Add(new BooleanTitleMatch() { DatabaseBitValue = 0, Value = "No" });
+					}
+					else
+					{
+						IsActive.Add(new BooleanTitleMatch() { DatabaseBitValue = 1, Value = "Yes" });
+					}
+					if (item.volsClient == 0)
+					{
+						IsClient.Add(new BooleanTitleMatch() { DatabaseBitValue = 0, Value = "No" });
+					}
+					else
+					{
+						IsClient.Add(new BooleanTitleMatch() { DatabaseBitValue = 1, Value = "Yes" });
+					}
+					if (item.volsCourtOrdered == 0)
+					{
+						CourtOrdered.Add(new BooleanTitleMatch() { DatabaseBitValue = 0, Value = "No" });
+					}
+					else
+					{
+						CourtOrdered.Add(new BooleanTitleMatch() { DatabaseBitValue = 1, Value = "Yes" });
+					}
 				}
-				if (item.volsClient == 0)
-				{
-					IsClient.Add(new BooleanTitleMatch() { DatabaseBitValue = 0, Value = "No" });
-				}
-				else
-				{
-					IsClient.Add(new BooleanTitleMatch() { DatabaseBitValue = 1, Value = "Yes" });
-				}
-				if(item.volsCourtOrdered == 0)
-				{
-					CourtOrdered.Add(new BooleanTitleMatch() { DatabaseBitValue = 0, Value = "No" });
-				}
-				else
-				{
-					CourtOrdered.Add(new BooleanTitleMatch() { DatabaseBitValue = 1, Value = "Yes" });
-				}
-					
-			}       
+
+			}
 		}
-		
+
 	}
 }
