@@ -11,7 +11,19 @@ namespace CCSVolunteerMVC.Models
 		[DataType(DataType.Date)]
 		public DateTime day { get; set; }
 
-		public decimal individualHours { get; set; }
-		public decimal groupHours { get; set; }
+		public decimal? individualHoursOgden { get; set; }
+		public decimal? individualHoursSaltLake { get; set; }
+
+		public decimal? groupHoursOgden { get; set; }
+		public decimal? groupHoursSaltLake { get; set; }
+		[Required]
+		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+		public DateTime startingDate { get; set; }
+		[Required]
+		[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+
+		public DateTime endingDate { get; set; }
+
+
 	}
 }

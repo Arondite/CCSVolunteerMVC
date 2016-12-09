@@ -18,58 +18,37 @@ namespace CCSVolunteerMVC.Controllers
 
 		public ActionResult TotalHours(DateTime? startDate, DateTime? endDate)
 		{
-
-
-			var totalHoursWorked = new TotalHoursWorkedViewModel();
+			if (startDate == null)
+			{
+				startDate = DateTime.Today.AddDays(-7);
+			}
+			if (endDate == null)
+			{
+				endDate = DateTime.Today;
+			}
+			
 			var listOfWorkDates = new List<WorkDate>();
-
-
-			var dayQuerySingle = db.HoursWorkeds.Where(r => r.hrsWrkedSchedDate.Date >= startDate && r.hrsWrkedSchedDate.Date <= endDate)
-			.Select(r => r);
-
-
-
-			foreach (var day in db.HoursWorkeds
-				.Where(r => r.hrsWrkedSchedDate.Date >= startDate && r.hrsWrkedSchedDate.Date <= endDate).
-				Select(p => p.hrsWrkedSchedDate).Distinct())
+			
+			var dayQuerySingle = db.HoursWorkeds
+				.Where(r => DbFunctions.TruncateTime(r.hrsWrkedSchedDate) >= startDate && DbFunctions.TruncateTime(r.hrsWrkedSchedDate) <= endDate)
+				.Include(i => i.positionLocation)
+			.GroupBy(group => new
 			{
-				WorkDate temp = new WorkDate();
-				temp.day = day; // temp workdate to add to list through iterations
-				temp.individualHours = 0;
-				temp.groupHours = 0;
-				listOfWorkDates.Add(temp);
-			}
-
-			foreach (var record in dayQuerySingle)
+				group.hrsWrkedSchedDate
+				//group.positionLocation.position
+			})
+			.Select(r => new WorkDate
 			{
-				foreach (WorkDate workDay in listOfWorkDates)
-				{
-					if (workDay.day.Date == record.hrsWrkedSchedDate.Date)
-					{
-						if (record.volunteerID != null) // if individual volunteer
-						{
-							workDay.individualHours += record.hrsWrkdQty;
-						}
-						else if (record.volunteerID == null) // if group volunteer
-						{
-							workDay.groupHours += record.hrsWrkdQty;
-						}
-					}
-				}
-			}
-
-			foreach (WorkDate workDay in listOfWorkDates)
-			{
-				totalHoursWorked.individualTotal += workDay.individualHours;
-				totalHoursWorked.groupTotal += workDay.groupHours;
-			}
-
-			totalHoursWorked.workDates = listOfWorkDates;
-			totalHoursWorked.startingDay = (DateTime)(startDate);
-			totalHoursWorked.endingDay = (DateTime)endDate;
-
-
-			return View(totalHoursWorked);
+				day = r.Key.hrsWrkedSchedDate,
+				individualHoursOgden = r.Where(q => q.volunteerID != null && q.positionLocationID == 2).Sum(t => t.hrsWrkdQty),
+				individualHoursSaltLake = r.Where(q => q.volunteerID != null && q.positionLocationID == 1).Sum(t => t.hrsWrkdQty),
+				groupHoursOgden = r.Where(q => q.volunteerID == null && q.positionLocationID == 2).Sum(t => t.hrsWrkdQty),
+				groupHoursSaltLake = r.Where(q => q.volunteerID == null && q.positionLocationID == 1).Sum(t => t.hrsWrkdQty),
+				startingDate = (DateTime)startDate,
+				endingDate = (DateTime)endDate
+			}).ToList();
+			
+			return View(dayQuerySingle);
 		}
 
 		// GET: HoursWorked

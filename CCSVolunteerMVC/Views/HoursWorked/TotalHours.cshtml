@@ -1,14 +1,18 @@
-﻿@model CCSVolunteerMVC.ViewModels.TotalHoursWorkedViewModel
+﻿@model IEnumerable<CCSVolunteerMVC.Models.WorkDate>
 
 @{
 	ViewBag.Title = "TotalHours";
 	var startDate = Request["StartDate"];
 	var endDate = Request["EndDate"];
 }
-
-
+<style>
+	body {
+		padding-top: 11%;
+	}
+</style>
+<div class="row" height="15px"></div>
 <h2>TotalHours</h2>
-<form action="@Url.Action("TotalHours", "HoursWorked", new { StartDate = startDate, EndDate = endDate})" method="post" class="form-horizontal" id="DateRange">
+<form action="@Url.Action("TotalHours", "HoursWorked", new { StartDate = startDate, EndDate = endDate })" method="post" class="form-horizontal" id="DateRange">
 	<div class="form-group">
 		<div class="row">
 			<label class="col-md-2" for="StartDate">Starting Date</label>
@@ -23,10 +27,20 @@
 		</div>
 	</div>
 </form>
-
+@{ if (Model.Any())
+	{
+		<h2>Total Hours from:  @Model.ElementAt(0).startingDate to: @Model.ElementAt(0).endingDate </h2>
+	}
+}
 @if (IsPost)
 {
-
+	startDate = Request["StartDate"];
+	endDate = Request["EndDate"];
+	
+	decimal indOgdenTotal = 0;
+	decimal indSaltLakeTotal = 0;
+	decimal groupOgdenTotal = 0;
+	decimal groupSaltLakeTotal = 0;
 
 	<table class="table">
 		<tr>
@@ -34,43 +48,78 @@
 				Date
 			</th>
 			<th>
-				Individual Hours
+				Individual Hours Ogden
 			</th>
 			<th>
-				Group Hours
+				Individual Hours Salt Lake
+			</th>
+			<th>
+				Group Hours Ogden
+			</th>
+			<th>
+				Group Hours Salt Lake
 			</th>
 		</tr>
 
-		@foreach (var item in Model.workDates)
+		@foreach (var item in Model)
 		{
 			<tr>
 				<td>
 					@Html.DisplayFor(modelItem => item.day)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.individualHours)
+					@Html.DisplayFor(modelItem => item.individualHoursOgden)
+
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.groupHours)
-				</td>
+					@Html.DisplayFor(modelItem => item.individualHoursSaltLake)
 
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.groupHoursOgden)
+
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.groupHoursSaltLake)
+
+				</td>
 			</tr>
+			if (item.individualHoursOgden != null)
+			{
+				indOgdenTotal += (decimal)item.individualHoursOgden;
+			}
+			if (item.individualHoursSaltLake != null)
+			{ indSaltLakeTotal += (decimal)item.individualHoursSaltLake; }
+
+			if (item.groupHoursOgden != null)
+			{ groupOgdenTotal += (decimal)item.groupHoursOgden; }
+
+			if (item.groupHoursSaltLake != null)
+			{
+				groupSaltLakeTotal += (decimal)item.groupHoursSaltLake;
+			}
+
 		}
 		<tr>
 			<td>
-				TOTAL
+				TOTALS
 			</td>
 			<td>
-				@Html.Display(Model.individualTotal.ToString())
+				@indOgdenTotal
 			</td>
 			<td>
-				@Html.Display(Model.groupTotal.ToString())
+				@indSaltLakeTotal
+			</td>
+			<td>
+				@groupOgdenTotal
+			</td>
+			<td>
+				@groupSaltLakeTotal
 			</td>
 		</tr>
 
 	</table>
-
-
 }
+
 
 
