@@ -75,7 +75,12 @@ namespace CCSVolunteerMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Volunteers.Add(volunteer);
+				volunteer.volJoinDate = DateTime.Now.Date;
+				volunteer.volsCourtOrdered = 0;
+				volunteer.volsClient = 0;
+				volunteer.volsActive = 1;
+				volunteer.volPin = volunteer.volPin;
+				db.Volunteers.Add(volunteer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
