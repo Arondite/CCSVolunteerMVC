@@ -14,7 +14,18 @@
 			Response.Redirect("~/MessageScreens/EndTerminal");
 		}
 	}
+	if (App.Refresh == 0)
+	{
+		App.Refresh = 1;
+	}
+	else
+	{
+		Response.Redirect("~/Kiosk/Index");
+	}
 }
+<head>
+	<meta http-equiv="refresh" content="60">
+</head>
 <div class="container-fluid">
 	<div class="container">
 		<h1 class="jumbotron text-center">User Log In</h1>
@@ -43,6 +54,11 @@
 		</form>
 	</div>
 </div>
+<form action="@Url.Action("Index", "Index")" method="post" class="form-horizontal col-md-12 container-fluid" id="login">
+	<div class="col-sm-12">
+		<input class="btn btn-secondary btn-lg btn-block jumbotron col-md-offset-3" style="background-color: #041596; color: #ffffff" name="Return To Index" type="submit" id="Return To Index" formmethod="POST" title="Out" value="Return To Index">
+	</div>
+</form>
 <br><br>
 <script src="~/Scripts/main.js"></script>
 <script src="~/Scripts/dateValidation.js"></script>

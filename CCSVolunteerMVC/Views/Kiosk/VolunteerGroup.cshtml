@@ -26,16 +26,13 @@
 	{
 		action = Model.ElementAt(0);
 	}
-	if (IsPost) {
-		var randomItem = 0;
-
-	}
+	
 }
 
 <h2 class="jumbotron text-center">Kiosk Volunteer or Group</h2>
 <form action="@Url.Action("VolunteerClock", "Kiosk", new { clock = action.ToString() })" method="post" class="form-horizontal" id="login">
 	<div class="col-sm-offset-2 col-sm-5">
-		<input class="btn btn-primary btn-lg btn-block jumbotron" style="background-color: #04963e; color: #ffffff" name="Volunteer" type="submit" id="Volunteer" formmethod="POST" title="Volunteer" value="Volunteer">
-		<input class="btn btn-secondary btn-lg btn-block jumbotron" style="background-color: #041596; color: #ffffff" name="Group" type="submit" id="Group" formmethod="POST" title="Group" value="Group">
+		<input class="btn btn-primary btn-lg btn-block jumbotron col-md-offset-3" style="background-color: #04963e; color: #ffffff" name="Volunteer" type="submit" id="Volunteer" formmethod="POST" title="Volunteer" value="Volunteer">
+		<input class="btn btn-secondary btn-lg btn-block jumbotron col-md-offset-3" style="background-color: #041596; color: #ffffff" name="Group" type="submit" id="Group" formmethod="POST" title="Group" value="Group">
 	</div>
 </form>
