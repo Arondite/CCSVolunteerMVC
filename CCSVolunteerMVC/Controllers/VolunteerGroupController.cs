@@ -49,7 +49,11 @@ namespace CCSVolunteerMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "volunteerGroupID,volGrpName,volGrpUserName,volGrpPasswordHash,volGrpAddress1,volGrpAddress2,volGrpState,volGrpZip,volGrpIsActive")] VolunteerGroup volunteerGroup)
         {
-            if (ModelState.IsValid)
+			if (volunteerGroup.volGrpUserName != null)
+			{ 
+				volunteerGroup.volGrpPasswordHash = volunteerGroup.volGrpUserName;
+			}
+			if (ModelState.IsValid)
             {
                 db.VolunteerGroups.Add(volunteerGroup);
                 db.SaveChanges();
