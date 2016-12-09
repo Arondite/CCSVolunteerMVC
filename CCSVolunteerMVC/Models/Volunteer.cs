@@ -72,7 +72,7 @@ namespace CCSVolunteerMVC.Models
 		public int volsCourtOrdered { get; set; }
         public virtual ICollection<CourtOrdered> courtOrdereds { get; set; }
 		[Display(Name = "Ethnicity")]
-        public virtual int? ethnicityID { get; set; }
+        public virtual int ethnicityID { get; set; }
         public virtual Ethnicity ethnicity { get; set; }
 		[Display(Name = "Client")]
         public byte volsClient { get; set; }
