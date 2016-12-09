@@ -24,20 +24,23 @@
 }
 
 <h4 class="jumbotron text-center">Please Enter Your Pin.<br /> MMDDYY(example April 12, 1986 = 041286)</h4>
-
-<form action="@Url.Action("VolunteerPasswordList", "Kiosk")" method="post" class="form-horizontal col-sm-offset-4" id="login">
-	<div class="form-group">
-		<div class="row">
-			<label class="col-md-4 col-sm-offset-1" for="Password">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;Volunteer's Pin</label>
-			<input class="form-control col-md-10" type="tel" maxlength="6" pattern="[0-9]*" inputmode="numeric" name="Password" id="Password">
+<div class="container form-horizontal text-center">
+	<form action="@Url.Action("VolunteerPasswordList", "Kiosk")" method="post" class="form-horizontal col-sm-offset-4" id="login">
+		<div class="form-group">
+			<div class="row">
+				<label class="col-md-4 col-sm-offset-1" for="Password">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;Volunteer's Pin
+				</label>
+				<input class="form-control col-md-10" type="tel" maxlength="6" pattern="[0-9]*" inputmode="numeric" name="Password" id="Password">
+			</div>
+			<div class="row ">
+				<span class="col-md-2"></span>
+				<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Clock In/Out">
+			</div>
 		</div>
-		<div class="row ">
-			<span class="col-md-2"></span>
-			<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Clock In/Out">
-		</div>
-	</div>
-</form>
+	</form>
+</div>
 @*<form action="@Url.Action("NewVolunteer", "Kiosk")" method="get" >
 	<div>
 		<input class="btn btn-success" name="CreateVolunteer" type="submit" id="CreateVolunteer" formmethod="get" title="Submit" value="Create New User">
