@@ -1,7 +1,7 @@
 ﻿
 @{
 	ViewBag.Title = "Location";
-	
+
 	///This logic logges the location of the kiosk for further use in the appplication
 	///This screen is only presented once 
 	if (IsPost)
@@ -16,6 +16,10 @@
 		{
 			App.Location = "1";
 		}
+		Response.Redirect("~/Kiosk/Index");
+	}
+	if (App.Admin != 1)
+	{
 		Response.Redirect("~/Kiosk/Index");
 	}
 }

@@ -22,6 +22,10 @@
 	{
 		Response.Redirect("~/Kiosk/Index");
 	}
+	if (App.Admin != 3)
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
 }
 <head>
 	<meta http-equiv="refresh" content="60">

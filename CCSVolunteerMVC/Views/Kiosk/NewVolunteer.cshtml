@@ -3,6 +3,10 @@
 @{
 	ViewBag.Title = "New Volunteer";
 	App.TimeInTimeOut = "In";
+	if (App.Admin != 3)
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
 }
 
 <h4 class="jumbotron text-center">A Pin will be assigned to you with our system

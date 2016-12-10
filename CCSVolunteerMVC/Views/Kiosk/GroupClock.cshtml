@@ -4,6 +4,10 @@
 	///This screen will allow group volunteers to choose which volunteer they are
 	///This is a tabbed index this goes alphabetical by first character
 	///Some code was left in if for further use
+	if (App.Admin != 3)
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
 }
 
 <h4 class="jumbotron text-center">Select your group</h4>

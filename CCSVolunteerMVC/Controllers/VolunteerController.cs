@@ -16,12 +16,6 @@ namespace CCSVolunteerMVC.Controllers
     {
         private CCSContext db = new CCSContext();
 
-		// GET: Volunteer
-		//public ActionResult Index()
-		//{
-		//    return View(db.Volunteers.ToList());
-		//}
-		// GET: VolunteerSearch
 		public ActionResult VolunteerSearch(string searchString)
 		{
 			var viewModel = new VolunteerSearch();

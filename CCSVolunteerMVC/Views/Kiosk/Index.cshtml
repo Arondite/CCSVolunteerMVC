@@ -4,7 +4,10 @@
 	///This screen is for the use of the volunteers to help process of clocking in and out
 	///This gives the option to end the day for the kiosk which is validated by the admin sign in
 	///If admin signs out, it automatically clock everyone left out for the volunteer duration of an hour
-	App.Admin = 3;
+	if (App.Admin == 1)
+	{
+		App.Admin = 3;
+	}
 	App.Refresh = 0;
 }
 

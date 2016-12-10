@@ -78,6 +78,13 @@
 			Response.Redirect("~/MessageScreens/NoRecords");
 		}
 	}
+	if (App.Admin != 3)
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
+	if (groupCount == 0) {
+		Response.Redirect("~/MessageScreens/NoRecords");
+	}
 
 }
 

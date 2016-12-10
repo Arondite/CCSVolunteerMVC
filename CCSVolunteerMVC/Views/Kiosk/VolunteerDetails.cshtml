@@ -17,7 +17,7 @@
 	}
 	var position = Request["Positions"];
 	int locationId = 0;
-	
+
 	if (IsPost)
 	{
 		int positionId = 0;
@@ -47,6 +47,10 @@
 				Response.Redirect("~/MessageScreens/NoRecords");
 			}
 		}
+	}
+	if (App.Admin != 3)
+	{
+		Response.Redirect("~/UserLogIn/Index");
 	}
 }
 
