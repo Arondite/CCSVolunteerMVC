@@ -1,0 +1,94 @@
+﻿@model IEnumerable<CCSVolunteerMVC.ViewModels.HoursByDayDetailViewModel>
+
+@{
+	ViewBag.Title = "HoursByDayDetail";
+}
+
+@{
+	var queryDate = Request["QueryDate"];
+}
+<h2>Hours By Day Detail</h2>
+
+<style>
+	body {
+		padding-top: 11%;
+	}
+</style>
+<div class="row" height="15px"></div>
+
+
+<form action="@Url.Action("HoursByDayDetail", "HoursWorked", new { QueryDate = queryDate})" method="post" class="form-horizontal" id="Date">
+	<div class="form-group">
+		<div class="row">
+			<label class="col-md-2" for="StartDate">Starting Date</label>
+			<input class="form-control col-md-10" type="date" name="QueryDate" id="QueryDate">
+		</div>
+		<div class="row">
+			<input class="btn btn-primary" name="Date" type="submit" formmethod="POST" title="Date" />
+		</div>
+	</div>
+</form>
+@{ if (Model.Any())
+	{
+		<h2>
+			Hours Worked Entries for: @Model.ElementAt(0).date.Date
+		</h2>
+	}
+}
+
+
+<table class="table">
+	<tr>
+		<th>
+			Date
+		</th>
+		<th>
+			Volunteer Group Name
+		</th>
+		<th>
+			Volunteer First Name
+		</th>
+		<th>
+			Volunteer Last Name
+		</th>
+		<th>
+			Time Clocked In
+		</th>
+		<th>
+			Time Clocked Out
+		</th>
+		<th>
+			Number of Hours Worked
+		</th>
+
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.date)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volunteerGroupName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volFirstName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.volLastName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.hoursWorkedTimeIn)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.hoursWorkedTimeOut)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.hoursWrkedQty)
+			</td>
+
+		</tr>
+	}
+
+</table>

@@ -1,14 +1,16 @@
 ﻿@using CCSVolunteerMVC.Models
+@using CCSVolunteerMVC.DAL;
 @using CCSVolunteerMVC.ViewModels
 @model CCSVolunteerMVC.ViewModels.VolunteerGroupPositionViewModel
 @{
 	ViewBag.Title = "Details of group";
+	DatabaseHelper dbHelper = new DatabaseHelper();
 	///This screen displays the group that they are
 	///This all them to clock how many people they wish to clock in
 	///This list all the possible positions available for their volunteer work
 	var counter = Request["NumberOfPeople"];
 	var groupVolunteer = Model.Volunteer;
-	var groupCount = CurrentUsers.Users.Where(v => v.GroupId == groupVolunteer.volunteerGroupID).Count();
+	var groupCount = dbHelper.CountNumberOfGroupMembers(groupVolunteer);
 	var positions = Model.Position;
 	var positionSelection = Request["Position"];
 	int positionId;
@@ -47,7 +49,7 @@
 					if (int.TryParse(positionSelection, out positionId) && int.TryParse(appLocation, out positionLocationId))
 					{
 						User tempUser = new User(1, groupVolunteer.volunteerGroupID, positionId, 3, groupVolunteer.volGrpName, positionLocationId);
-						CurrentUsers.AddUser(tempUser);
+						dbHelper.WriteUser(tempUser);
 					}
 				}
 				Response.Redirect(string.Format("~/MessageScreens/CompleteSignIn/{0}", groupVolunteer.volunteerGroupID));
@@ -55,20 +57,15 @@
 			}
 			else if(!overCount)
 			{
-				List<User> tempUsers = new List<User>(CurrentUsers.Users);
+				int.TryParse(positionSelection, out positionId);
+				int.TryParse(appLocation, out positionLocationId);
+				var tempUser = new User(1, groupVolunteer.volunteerGroupID, positionId, 3, groupVolunteer.volGrpName, positionLocationId);
+				
+				List<HoursWorked> tempUsers = dbHelper.CollectionOfGroup(numberOfPeople, tempUser);
 
 				foreach (var item in tempUsers)
 				{
-					int tempCheck = CurrentUsers.Users.Where(i => i.GroupName == item.GroupName).Count();
-					if (numberOfPeople > 0)
-					{
-						CurrentUsers.UpdateGroupTimeOut(item.GroupId, item.GroupName);
-						numberOfPeople--;
-					}
-					else if (numberOfPeople == 0)
-					{
-						break;
-					}
+					dbHelper.FindRecentGroupUser(tempUser);
 				}
 				Response.Redirect(string.Format("~/MessageScreens/CompleteSignOut/{0}", groupVolunteer.volunteerGroupID));
 			}

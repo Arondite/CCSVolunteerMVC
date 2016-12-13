@@ -16,5 +16,12 @@ namespace CCSVolunteerMVC.Models
 			return new DateTime(((dt.Ticks + d.Ticks - 1) / d.Ticks) * d.Ticks);
 		}
 
+		public TimeSpan RoundTimeSpan(TimeSpan span, TimeSpan roundingTimeSpan)
+		{
+			long originalTicks = roundingTimeSpan.Ticks;
+			long roundedTicks = (long)(Math.Round((double)span.Ticks / originalTicks) * originalTicks);
+			TimeSpan result = new TimeSpan(roundedTicks);
+			return result;
+		}
 	}
 }

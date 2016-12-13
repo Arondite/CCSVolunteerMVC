@@ -24,7 +24,7 @@ namespace CCSVolunteerMVC.Models
 		public string HoursWorkedType { get; set; }
 		public decimal HoursWorkedQuantity { get; set; }
 		public string GroupName { get; set; }
-		public User(int userId, int groupId, int positionKey, int userAccount, string groupName, int positionLocationId )
+		public User(int userId, int groupId, int positionKey, int userAccount, string groupName, int positionLocationId)
 		{
 			UserId = userId;
 			GroupId = groupId;
@@ -32,8 +32,8 @@ namespace CCSVolunteerMVC.Models
 			UserAccount = userAccount;
 			GroupName = groupName;
 			HoursWorkedDate = DateTime.Now.Date;
-			ClockIn = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15));
-			ClockOut = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15)).AddHours(1);
+			ClockIn = DateTime.Now;
+			ClockOut = DateTime.Now.AddHours(1);
 			ModifiedOn = DateTime.UtcNow;
 			HoursWorkedType = "A";
 			HoursWorkedQuantity = 1;

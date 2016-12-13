@@ -1,8 +1,10 @@
 ﻿@using CCSVolunteerMVC.Models;
+@using CCSVolunteerMVC.DAL;
 @model CCSVolunteerMVC.ViewModels.VolunteerPositionViewModel
 
 @{
 	ViewBag.Title = "Details";
+	DatabaseHelper dbHelper = new DatabaseHelper();
 	///This is the View that displays the volunteers information that will allow them to clock in/out and submit which
 	///position they held for the volunteer work
 	List<SelectListItem> selectListItem = new List<SelectListItem>();
@@ -24,7 +26,7 @@
 		if (App.TimeInTimeOut == "In" && int.TryParse(position, out positionId) && int.TryParse(appLocation, out locationId))
 		{
 			User tempUser = new User(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, 1, positionId, 3, "", locationId);
-			CurrentUsers.AddUser(tempUser);
+			dbHelper.WriteUser(tempUser);
 			if (Model.Volunteer.Volunteer.ElementAt(0).volsCourtOrdered == 1)
 			{
 				Response.Redirect(string.Format("~/MessageScreens/CourtOrderedScreen/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
@@ -36,10 +38,12 @@
 		}
 		else
 		{
-			int tempCheck = CurrentUsers.Users.Where(u => u.UserId == Model.Volunteer.Volunteer.ElementAt(0).volunteerID).Count();
-			if (tempCheck > 0)
+			
+			User tempUser = new User(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, 1, positionId, 3, "", locationId);
+			if (tempUser != null)
 			{
-				CurrentUsers.UpdateVolunteerTimeOut(Model.Volunteer.Volunteer.ElementAt(0).volunteerID, "");
+				
+				dbHelper.FindRecentVolunteerUser(tempUser);
 				Response.Redirect(string.Format("~/MessageScreens/CompleteSignOut/{0}", Model.Volunteer.Volunteer.ElementAt(0).volunteerID));
 			}
 			else

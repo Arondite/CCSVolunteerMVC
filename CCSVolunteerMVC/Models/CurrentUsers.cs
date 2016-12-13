@@ -25,7 +25,7 @@ namespace CCSVolunteerMVC.Models
 
 		public static void AddUser(User user)
 		{
-			if(user != null)
+			if (user != null)
 			{
 				_users.Add(user);
 			}
@@ -33,7 +33,7 @@ namespace CCSVolunteerMVC.Models
 
 		public static void RemoveUser(int index)
 		{
-			if(_users != null)
+			if (_users != null)
 			{
 				_users.RemoveAt(index);
 			}
@@ -45,9 +45,12 @@ namespace CCSVolunteerMVC.Models
 				if (item.GroupId == id && item.GroupName == groupName)
 				{
 					int tempIndex;
-					item.ClockOut = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15));
+					item.ClockOut = DateTime.Now;
 					TimeSpan tempSpan = item.ClockOut.Subtract(item.ClockIn);
-					item.HoursWorkedQuantity = (decimal)tempSpan.TotalMinutes;
+
+					TimeSpan roundedHours = _timeRoundUp.RoundTimeSpan(tempSpan, TimeSpan.FromMinutes(15));
+					item.HoursWorkedQuantity = (decimal)roundedHours.TotalHours;
+
 					InsertVolunteerInDatabase(item);
 					tempIndex = _users.IndexOf(item);
 					RemoveUser(tempIndex);
@@ -60,10 +63,14 @@ namespace CCSVolunteerMVC.Models
 			foreach (var item in _users)
 			{
 				if (item.UserId == id && item.GroupName == volunteerName)
-				{	
+				{
 					int tempIndex;
-					item.ClockOut = _timeRoundUp.RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(15));
+					item.ClockOut = DateTime.Now;
 					TimeSpan tempSpan = item.ClockOut.Subtract(item.ClockIn);
+
+					TimeSpan roundedHours = _timeRoundUp.RoundTimeSpan(tempSpan, TimeSpan.FromMinutes(15));
+					item.HoursWorkedQuantity = (decimal)roundedHours.TotalHours;
+
 					item.HoursWorkedQuantity = (decimal)tempSpan.TotalMinutes;
 					InsertVolunteerInDatabase(item);
 					tempIndex = _users.IndexOf(item);
@@ -76,8 +83,8 @@ namespace CCSVolunteerMVC.Models
 		{
 			using (CCSContext context = new CCSContext())
 			{
-				foreach(var item in _users)
-				{ 
+				foreach (var item in _users)
+				{
 					context.HoursWorkeds.Add(new HoursWorked()
 					{
 						hrsWrkdIDType = item.HoursWorkedType,

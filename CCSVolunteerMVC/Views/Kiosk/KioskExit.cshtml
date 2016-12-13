@@ -1,6 +1,11 @@
 ﻿@using CCSVolunteerMVC.Models
+@using CCSVolunteerMVC.DAL;
 @{
 	ViewBag.Title = "KioskExit";
+	if (App.Admin != 3)
+	{
+		Response.Redirect("~/UserLogIn/Index");
+	}
 	///This screen is a login screen asking for the Admin's username and password.
 	///This will have the users that are still in the static class clock out with a given one hour of service
 	if (IsPost)
@@ -10,21 +15,19 @@
 		if (username == "CCSAdmin" && password == "CCSAdmin")
 		{
 			App.Admin = 1;
-			CurrentUsers.ClockOutExcessUsers();
+			DatabaseHelper dbHelper = new DatabaseHelper();
+			dbHelper.ClockOutExcessUsers();
 			Response.Redirect("~/MessageScreens/EndTerminal");
+			App.Refresh = 0;
 		}
 	}
 	if (App.Refresh == 0)
 	{
 		App.Refresh = 1;
 	}
-	else
+	else if(App.Refresh == 1 && App.Admin == 3)
 	{
 		Response.Redirect("~/Kiosk/Index");
-	}
-	if (App.Admin != 3)
-	{
-		Response.Redirect("~/UserLogIn/Index");
 	}
 }
 <head>
@@ -32,7 +35,7 @@
 </head>
 <div class="container-fluid">
 	<div class="container">
-		<h1 class="jumbotron text-center">User Log In</h1>
+		<h1 class="jumbotron text-center" style="background-color:#c41609">Sign out of machine</h1>
 		<br><br>
 		<div class="container">
 			<!--Previous action sent to action="http://icarus.cs.weber.edu/~rl11386/CCS/user/userLogIn.php"-->
@@ -49,14 +52,14 @@
 					<div class="col-sm-5">
 						<input name="password" type="password" required="required" class="form-control" id="password" maxlength="30">
 					</div>
-					<br><br>
 				</div>
-				<div class="col-sm-offset-2 col-sm-5">
-					<input class="btn btn-primary" name="submit" type="submit" id="submit" formmethod="POST" title="Submit" value="Submit">
+				<div class="col-sm-offset-2 col-sm-5 form-group">
+					<input class="btn btn-primary" name="submit" type="submit" id="submit" formmethod="POST" value="Submit">
 					&nbsp;&nbsp;&nbsp;
-					<input class="btn btn-danger" name="reset" type="reset" id="reset" title="Reset" value="Reset">
+					<input class="btn btn-danger" name="reset" type="reset" id="reset" value="Reset">
 				</div>
 			</form>
+			
 			<span class="col-md-8 col-sm-8"></span>
 			<div class="form-group">
 				<form action="@Url.Action("Index", "Kiosk")" method="post" class="form-horizontal col-md-12 container-fluid" id="login">
