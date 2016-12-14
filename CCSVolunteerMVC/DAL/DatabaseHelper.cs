@@ -43,8 +43,9 @@ namespace CCSVolunteerMVC.DAL
 																						.ThenByDescending(i => i.hrsWrkdTimeIn.Minute).First();
 			if (item != null)
 			{
-				item.hrsWrkdTimeOut = tempTime.RoundUp(DateTime.Now, TimeSpan.FromMinutes(15));
+				item.hrsWrkdTimeOut = DateTime.Now;
 				item.IsClockedIn = 0;
+				item.modifiedOn = DateTime.Now;
 				context.SaveChanges();
 			}
 		}
@@ -60,8 +61,9 @@ namespace CCSVolunteerMVC.DAL
 																						.ThenByDescending(i => i.hrsWrkdTimeIn.Minute).First();
 			if (item != null)
 			{
-				item.hrsWrkdTimeOut = tempTime.RoundUp(DateTime.Now, TimeSpan.FromMinutes(15));
+				item.hrsWrkdTimeOut = DateTime.Now;
 				item.IsClockedIn = 0;
+				item.modifiedOn = DateTime.Now;
 				context.SaveChanges();
 			}
 		}
@@ -115,6 +117,7 @@ namespace CCSVolunteerMVC.DAL
 			{
 				item.hrsWrkdTimeOut.AddHours(1);
 				item.IsClockedIn = 0;
+				item.modifiedOn = DateTime.Now;
 			}
 			context.SaveChanges();
 		}

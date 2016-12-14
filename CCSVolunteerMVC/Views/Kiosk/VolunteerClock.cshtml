@@ -32,16 +32,19 @@
 	<form action="@Url.Action("VolunteerPasswordList", "Kiosk")" method="post" class="form-horizontal" id="login">
 		<div class="form-group">
 			<div class="row" style="margin-left:150px">
-				<label class="col-sm-offset-1" style="margin-left: 50px" for="Password">
+				<label class="col-sm-offset-1" style="margin-left: 50px; font-size: 36px;" for="Password">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;Six digit pin
 				</label>
-				<input class="form-control col-md-10" type="tel" maxlength="6" pattern="[0-9]*" inputmode="numeric" name="Password" id="Password">
+				<input class="form-control col-md-10 jumbotron" type="tel" maxlength="6" pattern="[0-9]*" inputmode="numeric" name="Password" id="Password" placeholder="MMDDYY">
 			</div>
 			<div class="row" style="margin-left: 150px">
 				<span class="col-md-6"></span>
-				<input class="btn btn-primary btn-block" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Clock In/Out">
+				<input class="btn btn-primary btn-block jumbotron" name="PasswordBtn" type="submit" id="VolunteerPin" formmethod="POST" title="Password" value="Clock In/Out">
 			</div>
 		</div>
 	</form>
 </div>
+<script>
+	document.getElementById('Password').focus();
+</script>

@@ -8,6 +8,7 @@
 	{
 		Response.Redirect("~/UserLogIn/Index");
 	}
+	
 }
 
 <h4 class="jumbotron text-center">Select your group</h4>
@@ -43,7 +44,7 @@
 
 <table class="table">
 	<tr>
-		<th>
+		<th style="font-size: 36px;">
 			@Html.DisplayNameFor(model => model.volGrpName)
 		</th>
 		<th></th>
@@ -52,11 +53,11 @@
 	@foreach (var item in Model)
 	{
 		<tr>
-			<td>
+			<td style="font-size: 36px;">
 				@Html.DisplayFor(modelItem => item.volGrpName)
 			</td>
 			<td>
-				<button class="btn btn-block btn-primary" onclick="location.href='@Url.Action("GroupLogin", "Kiosk", new { id = item.volunteerGroupID})'">Select</button>
+				<button class="btn btn-block btn-primary btn-lg" onclick="location.href='@Url.Action("GroupLogin", "Kiosk", new { id = item.volunteerGroupID})'">Select</button>
 			</td>
 		</tr>
 	}
